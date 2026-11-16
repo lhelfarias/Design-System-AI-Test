@@ -1,4 +1,4 @@
-// Utilidades compartidas: carga de tokens.json, resolucion de alias y contraste WCAG.
+// Shared utilities: loading tokens.json, alias resolution and WCAG contrast.
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,17 +8,17 @@ export const SETS = ["reference", "system", "component"];
 const ALIAS = /^\{([^{}]+)\}$/;
 
 export function loadSets() {
-  // Fuente unica: tokens.json (formato de un solo archivo de Tokens Studio, un set por clave de primer nivel).
+  // Single source: tokens.json (Tokens Studio single-file format, one set per top-level key).
   const all = JSON.parse(readFileSync(join(ROOT, "tokens.json"), "utf8"));
   const sets = {};
   for (const name of SETS) {
-    if (!all[name]) throw new Error(`Falta el set "${name}" en tokens.json`);
+    if (!all[name]) throw new Error(`Missing set "${name}" in tokens.json`);
     sets[name] = all[name];
   }
   return sets;
 }
 
-// Aplana un arbol DTCG a { "a.b.c": { type, value, set, description } } heredando $type del grupo.
+// Flattens a DTCG tree into { "a.b.c": { type, value, set, description } } inheriting $type from the group.
 export function flatten(sets) {
   const flat = {};
   for (const [setName, tree] of Object.entries(sets)) {
@@ -26,7 +26,7 @@ export function flatten(sets) {
       const type = node.$type ?? inheritedType;
       if (Object.prototype.hasOwnProperty.call(node, "$value")) {
         const key = path.join(".");
-        if (flat[key]) throw new Error(`Token duplicado: ${key} (en ${flat[key].set} y ${setName})`);
+        if (flat[key]) throw new Error(`Duplicate token: ${key} (in ${flat[key].set} and ${setName})`);
         flat[key] = { type, value: node.$value, set: setName, description: node.$description };
         return;
       }
@@ -40,15 +40,15 @@ export function flatten(sets) {
   return flat;
 }
 
-// Resuelve alias recursivamente (tambien dentro de valores compuestos). Detecta ciclos y alias rotos.
+// Resolves aliases recursively (also inside composite values). Detects cycles and broken aliases.
 export function resolveValue(value, flat, trail = []) {
   if (typeof value === "string") {
     const m = value.match(ALIAS);
     if (!m) return value;
     const ref = m[1];
-    if (trail.includes(ref)) throw new Error(`Alias circular: ${[...trail, ref].join(" -> ")}`);
+    if (trail.includes(ref)) throw new Error(`Circular alias: ${[...trail, ref].join(" -> ")}`);
     const target = flat[ref];
-    if (!target) throw new Error(`Alias roto: {${ref}} (desde ${trail[0] ?? "?"})`);
+    if (!target) throw new Error(`Broken alias: {${ref}} (from ${trail[0] ?? "?"})`);
     return resolveValue(target.value, flat, [...trail, ref]);
   }
   if (Array.isArray(value)) return value.map((v) => resolveValue(v, flat, trail));
@@ -66,7 +66,7 @@ export function resolveAll(flat) {
   return out;
 }
 
-// --- Contraste WCAG 2.x (luminancia relativa) ---
+// --- WCAG 2.x contrast (relative luminance) ---
 export function hexToRgb01(hex) {
   const h = hex.replace("#", "");
   return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);

@@ -1,7 +1,7 @@
-// Genera dist/ a partir de tokens.json:
-//   dist/dtcg-2025.10/*.tokens.json  copia estricta del formato DTCG 2025.10
-//     (color y dimension como objetos; alias se conservan como "{ruta}")
-//   dist/tokens.resolved.json        lista plana con valores resueltos (para documentacion e IA)
+// Generates dist/ from tokens.json:
+//   dist/dtcg-2025.10/*.tokens.json  strict copy in DTCG 2025.10 format
+//     (color and dimension as objects; aliases kept as "{path}")
+//   dist/tokens.resolved.json        flat list with resolved values (for docs and AI)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SETS, loadSets, flatten, resolveAll, hexToRgb01 } from "./lib.mjs";
@@ -19,22 +19,22 @@ function toColor(hex) {
 }
 function toDimension(str) {
   const m = str.match(/^(-?\d+(?:\.\d+)?)(px|rem)$/);
-  if (!m) throw new Error(`Dimension no valida: ${str}`);
+  if (!m) throw new Error(`Invalid dimension: ${str}`);
   return { value: Number(m[1]), unit: m[2] };
 }
 function toFontFamily(str) {
   return str.split(",").map((s) => s.trim());
 }
 
-// Tokens Studio usa porcentaje (150%) para que Figma lo lea como multiplo; DTCG espera un numero multiplicador (1.5).
+// Tokens Studio uses a percentage (150%) so Figma reads it as a multiplier; DTCG expects a number (1.5).
 function toLineHeight(str) {
   const m = String(str).match(/^(\d+(?:\.\d+)?)%$/);
-  if (!m) throw new Error(`Interlineado no valido (se espera un porcentaje): ${str}`);
+  if (!m) throw new Error(`Invalid line height (percentage expected): ${str}`);
   return Math.round(Number(m[1])) / 100;
 }
 
 function convertValue(type, value) {
-  if (typeof value === "string" && ALIAS.test(value)) return value; // alias intacto
+  if (typeof value === "string" && ALIAS.test(value)) return value; // alias kept
   switch (type) {
     case "color": return toColor(value);
     case "dimension": return toDimension(value);
@@ -61,7 +61,7 @@ function convertTree(node, inheritedType) {
   }
   const out = {};
   for (const [k, v] of Object.entries(node)) {
-    if (k === "$type") continue; // el tipo se escribe en cada token
+    if (k === "$type") continue; // type is written on each token
     out[k] = k.startsWith("$") ? v : convertTree(v, type);
   }
   return out;
@@ -69,7 +69,7 @@ function convertTree(node, inheritedType) {
 
 const sets = loadSets();
 const flat = flatten(sets);
-const resolved = resolveAll(flat); // lanza error si hay alias rotos o circulares
+const resolved = resolveAll(flat); // throws on broken or circular aliases
 
 const distDir = join(ROOT, "dist", "dtcg-2025.10");
 mkdirSync(distDir, { recursive: true });
