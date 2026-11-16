@@ -307,7 +307,7 @@
   --color-text-disabled: var(--color-neutral-600);
   --color-surface-default: var(--color-white-alpha-8);
   --color-surface-subtle: var(--color-blue-950);
-  --color-surface-brand-subtle: var(--color-blue-800);
+  --color-surface-brand-subtle: var(--color-white-alpha-16);
   --color-surface-inverse: var(--color-neutral-50);
   --color-surface-page-start: var(--color-blue-800);
   --color-surface-page-end: var(--color-blue-950);
