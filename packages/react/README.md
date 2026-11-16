@@ -48,6 +48,15 @@ Six example screens, switched with the URL hash (`#product`, `#store`, `#music`,
 
 Differences from Figma: Music shows the site header on top so the demo can move between screens; the TV versions are not built in code yet.
 
+## Checks on GitHub
+
+`.github/workflows/checks.yml` runs on every pull request and on main:
+
+- **Tokens:** build, contrast in every mode, and a check that `css/tokens.css` matches `tokens.json`.
+- **React:** typecheck, build and the axe check of every screen (13 cases). Screenshots are kept as a downloadable artifact for 14 days.
+
+A red cross on a pull request means: do not merge yet.
+
 ## Notes
 
 - Fonts load from Google Fonts in `index.html`; without network the browser falls back to Arial (the tokens list it).
