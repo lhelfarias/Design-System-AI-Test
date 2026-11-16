@@ -68,3 +68,11 @@ A mode gives the same token another value. Components do not change: they keep u
 - **CSS:** `css/tokens.css` has a `[data-theme="tv"]` block with the overrides. Set `data-theme="tv"` on the root element.
 - **Figma:** Tokens Studio (free plan) exports only the default mode. The `tv` mode of the `system` collection is written by a script from `dist/modes.json`. Never edit mode values by hand in Figma.
 - **Contrast:** `npm test` checks every pair in each mode. Translucent colors are flattened over the lightest background of the mode.
+
+## Glass surfaces
+
+- `color.surface.glass`: raised panels (cards, charts, summaries) over the page gradient. White at 75% in the default mode, white at 8% in `tv`.
+- Pair it with a background blur bound to `effect.blur.surface` (24px) and a 1px border with `color.border.subtle`.
+- Page background: gradient from `color.surface.page-start` to `color.surface.page-end`.
+- Decorative shapes behind glass: `color.backdrop.accent-1` and `accent-2`, blurred with `effect.blur.backdrop` (96px), **at most 40% layer opacity**. Above 40%, muted text on glass can drop below 4.5:1 (measured: 4.58:1 at 40% over the darkest shape).
+- Do not use glass behind forms or long text; use `color.surface.default` there.

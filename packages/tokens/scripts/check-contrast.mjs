@@ -129,6 +129,11 @@ add("card hover border on background", "card.border-hover", "card.background", U
 add("error-message on surface.default", "error-message.foreground", "color.surface.default", TEXT);
 add("error-message on surface.subtle", "error-message.foreground", "color.surface.subtle", TEXT);
 
+// Glass panels (translucent, flattened over the page background)
+for (const fg of ["color.text.default", "color.text.muted", "color.text.link", "color.feedback.success.foreground", "color.feedback.error.foreground"]) {
+  add(`${fg} on surface.glass`, fg, "color.surface.glass", TEXT);
+}
+
 // Solid warning with default text on top
 add("feedback.warning.solid with text.default on top", "color.text.default", "color.feedback.warning.solid", TEXT);
 
