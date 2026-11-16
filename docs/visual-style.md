@@ -17,7 +17,7 @@ How the Ataraxia example screens are built: which surface goes where, and how th
 | Canvas | Page background | `color.surface.subtle` | — |
 | Panel | Forms, articles, filters, side navigation, tables | `color.surface.default`, border `color.border.subtle`, `radius.container` | — |
 | Glass | Cards, stat cards, charts, summaries | `color.surface.glass`, border `color.border.subtle`, `radius.container` | Glass (Figma) / blur (CSS) |
-| Band | Page title, product hero | `color.surface.page-start` with the frame in `tv` mode (planned: `color.surface.band`) | — |
+| Band | Page title, product hero | `color.surface.band` with the frame in `tv` mode | — |
 | Media area | Covers, product images | `color.surface.brand-subtle`, border `color.border.subtle` | — |
 | Bars | Player bar, mini player, bottom navigation | `color.surface.default` or `brand-subtle`, border on the side that touches content | — |
 
