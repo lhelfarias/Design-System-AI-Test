@@ -24,3 +24,7 @@ Read this folder before creating screens, components or code with this design sy
 | Example screens | "Designs Examples", file key `ue2fi6XJwFxbNvAsiCIIvN` |
 
 If two sources disagree, `tokens.json` and the docs in this repository win; report the difference.
+
+## Distribution
+
+How other teams will install the library (planned): `docs/distribution.md`. Until then, read components and tokens from this repository.
