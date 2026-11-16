@@ -24,4 +24,15 @@ Full detail: `docs/visual-style.md`.
 
 ## Reference implementation
 
-`packages/react/src/pages/Simulator.tsx` follows this recipe and passes the axe check at 1440 and 360 px.
+Six screens in `packages/react/src/pages`, one per pattern. Each is a "consumer team" page: it only imports from the library (`..`) and its own page CSS, which uses tokens only.
+
+| Screen | File | Pattern |
+|---|---|---|
+| Product | Product.tsx | Hero in tv mode with the page gradient; white sections with cards, table and accordion |
+| Store | Store.tsx | Title band with sort control; filters panel + product grid (3 → 2 → 1 columns) + pagination |
+| Music | Music.tsx | App layout in three panels: navigation, songs, player bar |
+| Simulator | Simulator.tsx | Form in a white panel; live summary in glass |
+| Help article | HelpArticle.tsx | Long text in a white panel at reading width; sticky "On this page" |
+| Analytics | Analytics.tsx | Stat cards (4 → 2 columns), bar chart with text summary, table in glass |
+
+`pages/Shell.tsx` is the shared page recipe (skip link, header, title band, main, footer). Copy it to start a new page.

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
-import { Header, Breadcrumbs, TitleBand, Container, Panel, TextInput, Select, Fieldset, Radio, Checkbox, Button, SummaryList, Footer } from "..";
+import { Breadcrumbs, Container, Panel, TextInput, Select, Fieldset, Radio, Checkbox, Button, SummaryList } from "..";
+import { Shell } from "./Shell";
 import "./Simulator.css";
 
 const RATE = 0.019; // example monthly interest, as in the Figma design
@@ -35,25 +36,13 @@ export function Simulator() {
   };
 
   return (
-    <>
-      <a className="sim-skip" href="#main">Skip to main content</a>
-      <Header
-        serviceName="Ataraxia"
-        links={[
-          { label: "Home", href: "#" },
-          { label: "Shop", href: "#shop" },
-          { label: "Card", href: "#card", current: true },
-          { label: "Support", href: "#support" },
-        ]}
-      />
-      <TitleBand>
+    <Shell current="simulator" mainClassName="sim-main" band={<>
         <Breadcrumbs items={[{ label: "Home", href: "#" }, { label: "Card", href: "#card" }, { label: "Cash advance" }]} />
         <div className="sim-heading">
           <h1>Cash advance simulator</h1>
           <p>See what a cash advance from your Ataraxia card would cost before you confirm it.</p>
         </div>
-      </TitleBand>
-      <main id="main" className="sim-main">
+      </>}>
         <Container>
           <div className="sim-columns">
             <Panel variant="solid" padding="xl" aria-labelledby="sim-form-title">
@@ -90,11 +79,6 @@ export function Simulator() {
             </Panel>
           </div>
         </Container>
-      </main>
-      <Footer
-        links={[{ label: "Help", href: "#help" }, { label: "Privacy", href: "#privacy" }, { label: "Cookies", href: "#cookies" }, { label: "Accessibility statement", href: "#a11y" }, { label: "Contact", href: "#contact" }]}
-        legal="© 2026 Ataraxia. All content is available under an open licence."
-      />
-    </>
+      </Shell>
   );
 }

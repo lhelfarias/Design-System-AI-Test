@@ -65,7 +65,8 @@ A mode gives the same token another value. Components do not change: they keep u
 - A token stores its mode value in `$extensions.modes`, next to the default value:
   `"default": { "$value": "{color.neutral.0}", "$extensions": { "modes": { "tv": "{color.white-alpha.8}" } } }`
 - `tv` is a dark mode for television: navy gradient background (`color.surface.page-start` → `page-end`), translucent "glass" surfaces (`color.surface.default`), light text and a white focus ring. `effect.blur.surface` is the background blur behind surfaces (0 by default, 24px in `tv`).
-- **CSS:** `css/tokens.css` has a `[data-theme="tv"]` block with the overrides. Set `data-theme="tv"` on the root element.
+- **CSS:** `css/tokens.css` has a `[data-theme="tv"]` block with the overrides. Set `data-theme="tv"` on the root element or on any section (the title band and the product hero use it on one block).
+- In CSS a `var()` is resolved where it is declared, so tokens that point at an overridden token (for example `--button-primary-background`) are declared again inside the `[data-theme]` block. The build does this automatically; without it, components inside a tv section would keep the default colors.
 - **Figma:** Tokens Studio (free plan) exports only the default mode. The `tv` mode of the `system` collection is written by a script from `dist/modes.json`. Never edit mode values by hand in Figma.
 - **Contrast:** `npm test` checks every pair in each mode. Translucent colors are flattened over the lightest background of the mode.
 
