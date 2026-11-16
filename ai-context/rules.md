@@ -24,3 +24,7 @@
 - Before changing tokens, adding a mode, or creating a component.
 - When the request could mean a different phase (design vs. code) or a different screen.
 - When a reference image or file is given: reproduce it as given before proposing variations.
+
+## Checks
+
+- Every pull request runs `.github/workflows/checks.yml`. Never merge with a failing check; fix the cause, do not disable the check.

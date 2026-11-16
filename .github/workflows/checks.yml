@@ -1,0 +1,60 @@
+# Runs the same checks as `npm test` on every pull request and on main.
+# A pull request shows a green check or a red cross before anyone merges it.
+# Based on the Playwright CI guide: https://playwright.dev/docs/ci-intro
+name: Checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  tokens:
+    name: Tokens (build + contrast)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/tokens
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: packages/tokens/package-lock.json
+      - run: npm ci
+      - name: Build tokens and check contrast in every mode
+        run: npm test
+      - name: Generated CSS matches tokens.json
+        # If this fails, run `npm run build` in packages/tokens and commit css/tokens.css.
+        run: git diff --exit-code -- css/tokens.css
+
+  react:
+    name: React (types + build + accessibility)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/react
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: packages/react/package-lock.json
+      - run: npm ci
+      - name: Install Playwright and Chromium
+        # Not in package.json: local machines use their own copy (scripts/a11y-check.mjs).
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Typecheck, build and axe check of every screen
+        run: npm test
+      - name: Keep the screenshots
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: screenshots
+          path: packages/react/screenshots/
+          retention-days: 14
