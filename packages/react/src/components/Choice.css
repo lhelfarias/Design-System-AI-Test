@@ -1,0 +1,37 @@
+/* Checkbox and Radio. The row is at least 44 px high so the whole label is an easy target (WCAG 2.5.8). */
+.ds-choice { display: flex; align-items: center; gap: var(--radio-label-gap); min-height: var(--size-target-min); }
+.ds-choice__label { font: var(--radio-label-typography); color: var(--color-text-default); cursor: pointer; }
+.ds-choice__input {
+  appearance: none;
+  flex: none;
+  margin: 0;
+  width: var(--size-indicator);
+  height: var(--size-indicator);
+  border: var(--radio-border-width) solid var(--color-border-control);
+  background: var(--color-surface-default);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+.ds-choice__input--radio { border-radius: var(--radio-radius); }
+.ds-choice__input--radio:checked { border-color: var(--radio-border-checked); }
+.ds-choice__input--radio:checked::before {
+  content: "";
+  width: var(--radio-dot-size);
+  height: var(--radio-dot-size);
+  border-radius: var(--radius-full);
+  background: var(--radio-dot);
+}
+.ds-choice__input--checkbox { border-width: var(--checkbox-border-width); border-radius: var(--checkbox-radius); }
+.ds-choice__input--checkbox:checked { background: var(--checkbox-background-checked); border-color: var(--checkbox-border-checked); }
+.ds-choice__input--checkbox:checked::before {
+  content: "";
+  width: calc(var(--size-indicator) * 0.3);
+  height: calc(var(--size-indicator) * 0.55);
+  border: solid var(--checkbox-checkmark);
+  border-width: 0 var(--border-width-2) var(--border-width-2) 0;
+  transform: translateY(-10%) rotate(45deg);
+}
+.ds-choice__input:disabled { border-color: var(--radio-disabled-border); cursor: not-allowed; }
+.ds-choice__input:disabled + .ds-choice__label { color: var(--radio-disabled-label); cursor: not-allowed; }
+.ds-choice__input[aria-invalid="true"] { border-color: var(--color-border-error); }

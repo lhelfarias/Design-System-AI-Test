@@ -1,0 +1,6 @@
+/* Shared by TextInput, Select and Fieldset: label, hint and error text. */
+.ds-field { display: flex; flex-direction: column; gap: var(--text-input-label-gap); }
+.ds-field__label { font: var(--text-input-label-typography); color: var(--color-text-default); }
+.ds-field__hint { margin: 0; font: var(--text-input-hint-typography); color: var(--color-text-muted); }
+.ds-error-message { margin: 0; display: flex; gap: var(--error-message-gap); font: var(--error-message-typography); color: var(--color-feedback-error-foreground); }
+legend.ds-field__label { padding: 0; }

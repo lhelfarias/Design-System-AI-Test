@@ -1,0 +1,31 @@
+{
+  "name": "@mi-design-system/react",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "React components for the design system, styled only with the CSS variables from packages/tokens",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "a11y": "node scripts/a11y-check.mjs",
+    "test": "npm run typecheck && npm run build && npm run a11y"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@storybook/addon-a11y": "10.6",
+    "@storybook/react-vite": "10.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "storybook": "10.6",
+    "typescript": "~5.9",
+    "vite": "^8.3.8"
+  }
+}

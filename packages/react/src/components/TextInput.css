@@ -1,0 +1,13 @@
+.ds-text-input {
+  width: 100%;
+  max-width: 20rem;
+  min-height: var(--size-target-min);
+  padding: 0 var(--text-input-padding-x);
+  border: var(--text-input-border-width) solid var(--color-border-control);
+  border-radius: var(--text-input-radius);
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  font: var(--text-input-typography);
+}
+.ds-text-input--error { border-color: var(--color-border-error); border-width: var(--text-input-border-width-error); }
+.ds-text-input:disabled { background: var(--color-action-disabled-background); color: var(--color-action-disabled-foreground); border-color: var(--color-action-disabled-border); }

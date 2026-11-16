@@ -1,0 +1,45 @@
+.ds-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-inline-md);
+  padding: var(--space-inset-md) var(--layout-margin-large);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+}
+.ds-header__service { font: var(--typography-heading-4); color: var(--color-text-inverse); text-decoration: none; }
+.ds-header__menu { display: none; }
+.ds-header__nav ul { display: flex; gap: var(--space-inline-lg); margin: 0; padding: 0; list-style: none; }
+.ds-header__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-target-min);
+  font: var(--typography-body);
+  color: var(--color-text-inverse);
+  text-decoration: underline;
+}
+/* Header link State=Current: no underline, a bar below instead, plus aria-current="page". */
+.ds-header__link[aria-current="page"] { text-decoration: none; box-shadow: inset 0 calc(-1 * var(--border-width-2)) 0 currentColor; }
+.ds-header :focus-visible { outline-color: var(--color-text-inverse); }
+
+/* Size=Compact: below the expanded breakpoint (840 px) the links move behind the Menu button. */
+@media (max-width: 839px) {
+  .ds-header { padding: var(--space-inset-sm) var(--layout-margin-compact); }
+  .ds-header__menu {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-inline-sm);
+    min-height: var(--size-target-min);
+    padding: 0 var(--space-inset-sm);
+    border: 0;
+    background: transparent;
+    color: var(--color-text-inverse);
+    font: var(--typography-label);
+    cursor: pointer;
+  }
+  .ds-header__menu svg { width: var(--size-icon); height: var(--size-icon); }
+  .ds-header__nav { display: none; flex-basis: 100%; }
+  .ds-header__nav--open { display: block; }
+  .ds-header__nav ul { flex-direction: column; gap: 0; }
+}
