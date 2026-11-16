@@ -71,8 +71,9 @@ A mode gives the same token another value. Components do not change: they keep u
 
 ## Glass surfaces
 
-- `color.surface.glass`: raised panels (cards, charts, summaries) over the page gradient. White at 75% in the default mode, white at 8% in `tv`.
-- Pair it with a background blur bound to `effect.blur.surface` (24px) and a 1px border with `color.border.subtle`.
-- Page background: gradient from `color.surface.page-start` to `color.surface.page-end`.
-- Decorative shapes behind glass: `color.backdrop.accent-1` and `accent-2`, blurred with `effect.blur.backdrop` (96px), **at most 40% layer opacity**. Above 40%, muted text on glass can drop below 4.5:1 (measured: 4.58:1 at 40% over the darkest shape).
+- `color.surface.glass`: raised panels (cards, charts, summaries). White at 75% in the default mode, white at 8% in `tv`.
+- Page background: gray gradient from `color.surface.page-start` (neutral 100) to `color.surface.page-end` (neutral 300). In `tv`, navy.
+- Effect in Figma: the native **Glass** effect (radius 40, refraction 0.6, depth 15, light -45° at 0.8, dispersion 0.15, splay 0.4). The Plugin API cannot bind Glass to a variable, so these values are fixed in the components. In CSS, approximate it with `backdrop-filter: blur(var(--effect-blur-surface))`.
+- Border: 1px `color.border.subtle`.
+- No decorative shapes behind glass.
 - Do not use glass behind forms or long text; use `color.surface.default` there.
