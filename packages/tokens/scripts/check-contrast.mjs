@@ -4,9 +4,60 @@
 import { loadSets, flatten, resolveAll, contrast } from "./lib.mjs";
 
 const t = resolveAll(flatten(loadSets()));
+// v5: alias de componente eliminados; el componente usa directamente la variable de system.
+const MOVED = {
+  "text-input.focus-ring": "focus.ring.color",
+  "select.focus-ring": "focus.ring.color",
+  "checkbox.focus-ring": "focus.ring.color",
+  "radio.focus-ring": "focus.ring.color",
+  "card.focus-ring": "focus.ring.color",
+  "button.disabled.background": "color.action.disabled.background",
+  "button.disabled.foreground": "color.action.disabled.foreground",
+  "button.disabled.border": "color.action.disabled.border",
+  "text-input.disabled.background": "color.action.disabled.background",
+  "text-input.disabled.foreground": "color.action.disabled.foreground",
+  "text-input.disabled.border": "color.action.disabled.border",
+  "select.disabled.background": "color.action.disabled.background",
+  "select.disabled.foreground": "color.action.disabled.foreground",
+  "select.disabled.border": "color.action.disabled.border",
+  "button.min-height": "size.target-min",
+  "text-input.min-height": "size.target-min",
+  "select.min-height": "size.target-min",
+  "checkbox.target-size": "size.target-min",
+  "checkbox.size": "size.indicator",
+  "radio.target-size": "size.target-min",
+  "radio.size": "size.indicator",
+  "text-input.background": "color.surface.default",
+  "text-input.foreground": "color.text.default",
+  "text-input.placeholder": "color.text.muted",
+  "text-input.hint": "color.text.muted",
+  "text-input.border": "color.border.control",
+  "text-input.border-error": "color.border.error",
+  "select.background": "color.surface.default",
+  "select.foreground": "color.text.default",
+  "select.icon": "color.text.default",
+  "select.border": "color.border.control",
+  "select.border-error": "color.border.error",
+  "select.hint": "color.text.muted",
+  "checkbox.background": "color.surface.default",
+  "checkbox.border": "color.border.control",
+  "checkbox.label": "color.text.default",
+  "checkbox.border-error": "color.border.error",
+  "radio.background": "color.surface.default",
+  "radio.border": "color.border.control",
+  "radio.label": "color.text.default",
+  "radio.border-error": "color.border.error",
+  "card.background": "color.surface.default",
+  "card.border": "color.border.subtle",
+  "card.title": "color.text.default",
+  "card.body": "color.text.default",
+  "notification-banner.foreground": "color.text.default",
+  "error-message.foreground": "color.feedback.error.foreground"
+};
 const val = (p) => {
-  if (!t[p]) throw new Error(`Token inexistente en el chequeo: ${p}`);
-  return t[p].resolved;
+  const key = t[p] ? p : MOVED[p];
+  if (!key || !t[key]) throw new Error(`Token inexistente en el chequeo: ${p}`);
+  return t[key].resolved;
 };
 
 const TEXT = 4.5;
