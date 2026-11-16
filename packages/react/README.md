@@ -27,10 +27,26 @@ React components of the design system. Every style comes from the CSS variables 
 | Summary list | `SummaryList` | Compact layout under 400 px of container |
 | Footer | `Footer` | |
 | Title band / panels | `TitleBand`, `Panel` (`solid` / `glass`), `Container` | docs/visual-style.md |
+| Tag, Notification banner, Accordion, Table, Pagination | `Tag`, `NotificationBanner`, `Accordion`, `Table`, `Pagination` | `components/Content.tsx` |
+| Product card, Stat card, Bar chart | `ProductCard`, `StatCard`, `BarChart` | Glass surface (`ds-glass`) |
+| Icon button, Nav item, Track row, Player | `IconButton`, `NavItem`, `TrackList`, `PlayerBar` | `components/Music.tsx` |
 
 ## Pages
 
-- `src/pages/Simulator.tsx`: Figma "Ataraxia — Simulator" (desktop 20:3, mobile 20:343).
+Six example screens, switched with the URL hash (`#product`, `#store`, `#music`, `#simulator`, `#help`, `#analytics`), so the built file also works without a server. Figma file "Designs Examples":
+
+| Screen | Desktop / Mobile node |
+|---|---|
+| `Product.tsx` | 13:419 / 14:136 |
+| `Store.tsx` | 15:10 / 15:477 |
+| `Music.tsx` | 6:96 / 7:115 |
+| `Simulator.tsx` | 20:3 / 20:343 |
+| `HelpArticle.tsx` | 22:201 / 22:333 |
+| `Analytics.tsx` | 25:3 / 25:233 |
+
+`npm run a11y` checks every screen at 1440 and 360 px (13 cases, axe WCAG 2.2 AA).
+
+Differences from Figma: Music shows the site header on top so the demo can move between screens; the TV versions are not built in code yet.
 
 ## Notes
 

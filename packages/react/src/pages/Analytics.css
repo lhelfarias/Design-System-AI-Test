@@ -1,0 +1,5 @@
+.an-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--layout-gutter-large); margin-bottom: var(--layout-gutter-large); }
+.an-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--layout-gutter-large); align-items: start; }
+@media (max-width: 1199px) { .an-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 839px) { .an-columns { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 599px) { .an-stats { gap: var(--layout-gutter-compact); margin-bottom: var(--layout-gutter-compact); } .an-columns { gap: var(--layout-gutter-compact); } }

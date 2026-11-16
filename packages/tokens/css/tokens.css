@@ -299,7 +299,7 @@
   --error-message-gap: var(--space-stack-xs);
 }
 
-/* tv mode (42 overrides). Set data-theme="tv" on the root element. */
+/* tv mode (42 overrides + 46 aliases re-declared). Set data-theme="tv" on any element. */
 [data-theme="tv"] {
   --color-text-default: var(--color-neutral-50);
   --color-text-muted: var(--color-neutral-300);
@@ -343,4 +343,50 @@
   --color-feedback-info-foreground: var(--color-azure-300);
   --color-feedback-info-background: var(--color-white-alpha-8);
   --color-feedback-info-border: var(--color-azure-300);
+  --focus-ring-color: var(--color-border-focus);
+  --button-primary-background: var(--color-action-primary-default);
+  --button-primary-background-hover: var(--color-action-primary-hover);
+  --button-primary-background-pressed: var(--color-action-primary-pressed);
+  --button-primary-foreground: var(--color-action-primary-foreground);
+  --button-secondary-background: var(--color-surface-default);
+  --button-secondary-background-hover: var(--color-action-secondary-hover-bg);
+  --button-secondary-background-pressed: var(--color-action-secondary-pressed-bg);
+  --button-secondary-foreground: var(--color-action-secondary-default);
+  --button-secondary-border: var(--color-action-secondary-default);
+  --checkbox-background-checked: var(--color-action-primary-default);
+  --checkbox-border-checked: var(--color-action-primary-default);
+  --checkbox-checkmark: var(--color-action-primary-foreground);
+  --checkbox-disabled-border: var(--color-action-disabled-foreground);
+  --checkbox-disabled-label: var(--color-text-disabled);
+  --checkbox-disabled-background-checked: var(--color-action-disabled-foreground);
+  --radio-border-checked: var(--color-action-primary-default);
+  --radio-dot: var(--color-action-primary-default);
+  --radio-disabled-border: var(--color-action-disabled-foreground);
+  --radio-disabled-label: var(--color-text-disabled);
+  --radio-disabled-dot: var(--color-action-disabled-foreground);
+  --tag-neutral-background: var(--color-surface-subtle);
+  --tag-neutral-foreground: var(--color-text-default);
+  --tag-brand-background: var(--color-surface-brand-subtle);
+  --tag-brand-foreground: var(--color-text-brand);
+  --tag-success-background: var(--color-feedback-success-background);
+  --tag-success-foreground: var(--color-feedback-success-foreground);
+  --tag-error-background: var(--color-feedback-error-background);
+  --tag-error-foreground: var(--color-feedback-error-foreground);
+  --tag-warning-background: var(--color-feedback-warning-background);
+  --tag-warning-foreground: var(--color-feedback-warning-foreground);
+  --tag-info-background: var(--color-feedback-info-background);
+  --tag-info-foreground: var(--color-feedback-info-foreground);
+  --notification-banner-info-background: var(--color-feedback-info-background);
+  --notification-banner-info-border: var(--color-feedback-info-border);
+  --notification-banner-info-icon: var(--color-feedback-info-foreground);
+  --notification-banner-success-background: var(--color-feedback-success-background);
+  --notification-banner-success-border: var(--color-feedback-success-border);
+  --notification-banner-success-icon: var(--color-feedback-success-foreground);
+  --notification-banner-warning-background: var(--color-feedback-warning-background);
+  --notification-banner-warning-border: var(--color-feedback-warning-border);
+  --notification-banner-warning-icon: var(--color-feedback-warning-foreground);
+  --notification-banner-error-background: var(--color-feedback-error-background);
+  --notification-banner-error-border: var(--color-feedback-error-border);
+  --notification-banner-error-icon: var(--color-feedback-error-foreground);
+  --card-border-hover: var(--color-action-primary-default);
 }

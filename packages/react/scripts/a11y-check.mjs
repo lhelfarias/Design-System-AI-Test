@@ -22,16 +22,19 @@ const server = createServer(async (req, res) => {
 
 await mkdir(OUT, { recursive: true });
 const browser = await chromium.launch();
+const PAGES = ["product", "store", "music", "simulator", "help", "analytics"];
 const cases = [
-  { name: "simulator-desktop", width: 1440, height: 1000 },
-  { name: "simulator-mobile", width: 360, height: 800 },
-  { name: "simulator-error-mobile", width: 360, height: 800, act: async (p) => { await p.fill("input[inputmode=decimal]", "20"); await p.click("button[type=submit]"); } },
+  ...PAGES.flatMap((id) => [
+    { name: `${id}-desktop`, hash: id, width: 1440, height: 1000 },
+    { name: `${id}-mobile`, hash: id, width: 360, height: 800 },
+  ]),
+  { name: "simulator-error-mobile", hash: "simulator", width: 360, height: 800, act: async (p) => { await p.fill("input[inputmode=decimal]", "20"); await p.click("button[type=submit]"); } },
 ];
 let total = 0;
 for (const c of cases) {
   const context = await browser.newContext({ viewport: { width: c.width, height: c.height }, deviceScaleFactor: 1 });
   const page = await context.newPage();
-  await page.goto("http://localhost:4173/");
+  await page.goto(`http://localhost:4173/#${c.hash}`);
   if (c.act) await c.act(page);
   const { violations } = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
   total += violations.length;
