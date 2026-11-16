@@ -41,6 +41,17 @@ WCAG levels are shown in brackets. Items marked *decision* are choices of this s
 - The current page in navigation is marked with `aria-current="page"` and a visual indicator that is not color alone (*synthesis*).
 - These patterns are not components yet. Build them as components before using them in more than one page.
 
+## TV and remote control
+
+Source: [Android TV: Focus system](https://developer.android.com/design/ui/tv/guides/styles/focus-system).
+
+- Input is the D-pad: arrows to move, center to select, Back to return. There is no hover and no pointer.
+- Exactly one element has focus at any time, and focus is always visible from 3 m: focused cards and tiles scale to `layout.tv.focus-scale` (1.05) and show the focus ring; other controls show the focus ring.
+- Group related items (a row of cards, a menu) so arrows move inside the group first, then to the next group (Android: focusable groups).
+- Arrow movement is predictable: left and right move within a row, up and down between rows. Focus never jumps to an element that is off screen without scrolling it into view (*synthesis*).
+- Back always returns to the previous screen or closes the open layer; it never exits the app without confirmation from the home screen (*synthesis*).
+- Leave room for the focused size: spacing between items must absorb the 5% scale so focused items do not overlap their neighbors ([Android TV: Layouts](https://developer.android.com/design/ui/tv/guides/styles/layouts)).
+
 ## Clickable cards
 
 The title link is stretched over the whole card; buttons inside stay above it. Never wrap a card that contains buttons in a link ([Inclusive Components: Cards](https://inclusive-components.design/cards/)).
