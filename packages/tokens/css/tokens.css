@@ -85,7 +85,7 @@
   --layout-height-540: 540px;
   --layout-scale-1-05: 1.05;
 
-  /* system (114). Meaning. Use these in pages and components. */
+  /* system (111). Meaning. Use these in pages and components. */
   --color-text-default: var(--color-neutral-900);
   --color-text-muted: var(--color-neutral-600);
   --color-text-inverse: var(--color-neutral-0);
@@ -97,8 +97,8 @@
   --color-surface-subtle: var(--color-neutral-100);
   --color-surface-brand-subtle: var(--color-blue-50);
   --color-surface-inverse: var(--color-blue-800);
-  --color-surface-page-start: var(--color-blue-50);
-  --color-surface-page-end: var(--color-neutral-100);
+  --color-surface-page-start: var(--color-neutral-100);
+  --color-surface-page-end: var(--color-neutral-300);
   --color-surface-glass: var(--color-white-alpha-75);
   --color-border-subtle: var(--color-neutral-300);
   --color-border-control: var(--color-neutral-600);
@@ -127,8 +127,6 @@
   --color-feedback-info-foreground: var(--color-azure-700);
   --color-feedback-info-background: var(--color-azure-50);
   --color-feedback-info-border: var(--color-azure-700);
-  --color-backdrop-accent-1: var(--color-blue-300);
-  --color-backdrop-accent-2: var(--color-blue-400);
   --space-inset-xs: var(--space-1);
   --space-inset-sm: var(--space-2);
   --space-inset-md: var(--space-3);
@@ -199,7 +197,6 @@
   --focus-ring-radius-container: var(--radius-md);
   --focus-ring-color: var(--color-border-focus);
   --effect-blur-surface: 24px;
-  --effect-blur-backdrop: 96px;
 
   /* component (97). Component decisions. Use inside the named component only. */
   --button-padding-x: var(--space-inset-xl);
@@ -301,7 +298,7 @@
   --error-message-gap: var(--space-stack-xs);
 }
 
-/* tv mode (43 overrides). Set data-theme="tv" on the root element. */
+/* tv mode (41 overrides). Set data-theme="tv" on the root element. */
 [data-theme="tv"] {
   --color-text-default: var(--color-neutral-50);
   --color-text-muted: var(--color-neutral-300);
@@ -344,6 +341,4 @@
   --color-feedback-info-foreground: var(--color-azure-300);
   --color-feedback-info-background: var(--color-white-alpha-8);
   --color-feedback-info-border: var(--color-azure-300);
-  --color-backdrop-accent-1: var(--color-blue-700);
-  --color-backdrop-accent-2: var(--color-blue-800);
 }
