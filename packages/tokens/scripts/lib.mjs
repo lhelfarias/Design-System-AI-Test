@@ -27,7 +27,7 @@ export function flatten(sets) {
       if (Object.prototype.hasOwnProperty.call(node, "$value")) {
         const key = path.join(".");
         if (flat[key]) throw new Error(`Duplicate token: ${key} (in ${flat[key].set} and ${setName})`);
-        flat[key] = { type, value: node.$value, set: setName, description: node.$description };
+        flat[key] = { type, value: node.$value, set: setName, description: node.$description, modes: node.$extensions?.modes };
         return;
       }
       for (const [k, v] of Object.entries(node)) {
@@ -70,6 +70,28 @@ export function resolveAll(flat) {
 export function hexToRgb01(hex) {
   const h = hex.replace("#", "");
   return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+}
+// Alpha of an 8-digit hex (#RRGGBBAA); 1 for 6 digits.
+export function hexAlpha(hex) {
+  const h = hex.replace("#", "");
+  return h.length === 8 ? parseInt(h.slice(6, 8), 16) / 255 : 1;
+}
+// Flattens a translucent color over an opaque one and returns a 6-digit hex.
+export function composite(fg, bg) {
+  const a = hexAlpha(fg);
+  if (a === 1) return fg.slice(0, 7);
+  const f = hexToRgb01(fg);
+  const b = hexToRgb01(bg);
+  return "#" + f.map((v, i) => Math.round((v * a + b[i] * (1 - a)) * 255).toString(16).padStart(2, "0")).join("").toUpperCase();
+}
+
+// Modes: a token can carry another value per mode in $extensions.modes (for example "tv").
+export const MODES = ["tv"];
+export function resolveMode(flat, mode) {
+  const swapped = Object.fromEntries(
+    Object.entries(flat).map(([k, tok]) => [k, tok.modes?.[mode] !== undefined ? { ...tok, value: tok.modes[mode] } : tok]),
+  );
+  return resolveAll(swapped);
 }
 export function luminance(hex) {
   const f = (v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);

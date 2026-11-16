@@ -1,9 +1,10 @@
 // Checks key color pairs against WCAG 2.2 using resolved values from tokens.json.
 // Thresholds: text 4.5:1 (WCAG 1.4.3), UI components and focus 3:1 (WCAG 1.4.11).
 // Disabled components are exempt and not checked.
-import { loadSets, flatten, resolveAll, contrast } from "./lib.mjs";
+import { loadSets, flatten, resolveAll, resolveMode, composite, contrast, MODES } from "./lib.mjs";
 
-const t = resolveAll(flatten(loadSets()));
+const flat = flatten(loadSets());
+let t = resolveAll(flat);
 // v5: component aliases removed; the component uses the system variable directly.
 const MOVED = {
   "text-input.focus-ring": "focus.ring.color",
@@ -131,12 +132,26 @@ add("error-message on surface.subtle", "error-message.foreground", "color.surfac
 // Solid warning with default text on top
 add("feedback.warning.solid with text.default on top", "color.text.default", "color.feedback.warning.solid", TEXT);
 
-let failed = 0;
-for (const [desc, fg, bg, min] of pairs) {
-  const ratio = contrast(val(fg), val(bg));
-  const ok = ratio >= min;
-  if (!ok) failed++;
-  console.log(`${ok ? "OK  " : "FAIL "}  ${ratio.toFixed(2).padStart(5)}:1  (min ${min})  ${desc}  [${val(fg)} / ${val(bg)}]`);
+// Translucent colors are flattened over the lightest page background of the mode (worst case for light text).
+const run = (label) => {
+  const base = composite(val("color.surface.page-start"), "#FFFFFF");
+  let failed = 0;
+  console.log(`\n== ${label} ==`);
+  for (const [desc, fg, bg, min] of pairs) {
+    const b = composite(val(bg), base);
+    const f = composite(val(fg), b);
+    const ratio = contrast(f, b);
+    const ok = ratio >= min;
+    if (!ok) failed++;
+    console.log(`${ok ? "OK  " : "FAIL "}  ${ratio.toFixed(2).padStart(5)}:1  (min ${min})  ${desc}  [${f} / ${b}]`);
+  }
+  console.log(`${pairs.length} pairs checked, ${failed} failing.`);
+  return failed;
+};
+
+let failed = run("default mode");
+for (const m of MODES) {
+  t = resolveMode(flat, m);
+  failed += run(`${m} mode`);
 }
-console.log(`\n${pairs.length} pairs checked, ${failed} failing.`);
 process.exit(failed ? 1 : 0);

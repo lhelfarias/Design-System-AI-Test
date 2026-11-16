@@ -57,3 +57,14 @@ Token descriptions are 8 words at most. Details go in this file.
 - The build fails if a variable points to one that does not exist.
 
 Use system variables in pages and component variables inside their component. Do not use reference variables in components.
+
+## Modes (TV)
+
+A mode gives the same token another value. Components do not change: they keep using the same variable names.
+
+- A token stores its mode value in `$extensions.modes`, next to the default value:
+  `"default": { "$value": "{color.neutral.0}", "$extensions": { "modes": { "tv": "{color.white-alpha.8}" } } }`
+- `tv` is a dark mode for television: navy gradient background (`color.surface.page-start` → `page-end`), translucent "glass" surfaces (`color.surface.default`), light text and a white focus ring. `effect.blur.surface` is the background blur behind surfaces (0 by default, 24px in `tv`).
+- **CSS:** `css/tokens.css` has a `[data-theme="tv"]` block with the overrides. Set `data-theme="tv"` on the root element.
+- **Figma:** Tokens Studio (free plan) exports only the default mode. The `tv` mode of the `system` collection is written by a script from `dist/modes.json`. Never edit mode values by hand in Figma.
+- **Contrast:** `npm test` checks every pair in each mode. Translucent colors are flattened over the lightest background of the mode.

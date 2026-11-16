@@ -4,7 +4,7 @@
 //   dist/tokens.resolved.json        flat list with resolved values (for docs and AI)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { ROOT, SETS, loadSets, flatten, resolveAll, hexToRgb01 } from "./lib.mjs";
+import { ROOT, SETS, MODES, loadSets, flatten, resolveAll, resolveMode, hexToRgb01, hexAlpha } from "./lib.mjs";
 
 const ALIAS = /^\{[^{}]+\}$/;
 const round = (n) => Math.round(n * 10000) / 10000;
@@ -13,8 +13,8 @@ function toColor(hex) {
   return {
     colorSpace: "srgb",
     components: hexToRgb01(hex).map(round),
-    alpha: 1,
-    hex: hex.toLowerCase(),
+    alpha: round(hexAlpha(hex)),
+    hex: hex.slice(0, 7).toLowerCase(),
   };
 }
 function toDimension(str) {
@@ -79,13 +79,27 @@ for (const name of SETS) {
   writeFileSync(join(distDir, `${name}.tokens.json`), JSON.stringify(file, null, 2) + "\n");
 }
 
-const list = Object.entries(resolved).map(([path, t]) => ({
-  path,
-  set: t.set,
-  type: t.type,
-  value: t.resolved,
-  ...(t.description ? { description: t.description } : {}),
-}));
+const byMode = Object.fromEntries(MODES.map((m) => [m, resolveMode(flat, m)]));
+const list = Object.entries(resolved).map(([path, t]) => {
+  // Values that differ in each mode (directly or through an alias).
+  const modes = Object.fromEntries(
+    MODES.filter((m) => JSON.stringify(byMode[m][path].resolved) !== JSON.stringify(t.resolved)).map((m) => [m, byMode[m][path].resolved]),
+  );
+  return {
+    path,
+    set: t.set,
+    type: t.type,
+    value: t.resolved,
+    ...(Object.keys(modes).length ? { modes } : {}),
+    ...(t.description ? { description: t.description } : {}),
+  };
+});
+
+// dist/modes.json: what a script must write in Figma for each mode (variable path -> alias or raw value).
+const modeMap = Object.fromEntries(
+  MODES.map((m) => [m, Object.fromEntries(Object.entries(flat).filter(([, tok]) => tok.modes?.[m] !== undefined).map(([path, tok]) => [path, tok.modes[m]]))]),
+);
+writeFileSync(join(ROOT, "dist", "modes.json"), JSON.stringify(modeMap, null, 2) + "\n");
 writeFileSync(join(ROOT, "dist", "tokens.resolved.json"), JSON.stringify(list, null, 2) + "\n");
 
 console.log(`OK: ${list.length} tokens (${SETS.map((s) => `${s}: ${list.filter((t) => t.set === s).length}`).join(", ")})`);
