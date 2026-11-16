@@ -1,0 +1,11 @@
+{
+  "name": "@mi-design-system/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tokens de diseño (fuente: tokens.json de Tokens Studio) y copia estricta DTCG 2025.10",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-contrast.mjs",
+    "test": "node scripts/build.mjs && node scripts/check-contrast.mjs"
+  }
+}
