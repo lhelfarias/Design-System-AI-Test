@@ -43,4 +43,5 @@ Token descriptions are 8 words at most. Details go in this file.
 - Line height as a percentage (125%, 150%): Figma reads a unitless number as pixels. WCAG 1.4.12 requires tolerating 1.5.
 - `size.target-min` (44 px) is a system decision: WCAG 2.2 AA requires 24 px, AAA 44 px.
 - Error border of 2 px on fields (normal is 1 px), so errors do not rely on color alone. If sizes are added, each size defines its own width.
-- Focus ring: 2 px wide, 2 px offset, radius `focus.ring.radius` (control radius + 4 px).
+- Focus ring: 2 px wide, 2 px offset. Radius: `focus.ring.radius` on controls (6 + 4 px) and `focus.ring.radius-container` on containers such as Card (2 + 4 px).
+- Clickable card: the title link is stretched over the whole card; buttons inside stay above it. Never wrap the card in a link that contains buttons. Source: https://inclusive-components.design/cards/
