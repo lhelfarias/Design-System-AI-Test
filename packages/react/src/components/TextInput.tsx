@@ -1,0 +1,35 @@
+import { useId, type InputHTMLAttributes } from "react";
+import { ErrorMessage } from "./ErrorMessage";
+import "./Field.css";
+import "./TextInput.css";
+
+export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+  /** Figma: Label (always visible; never use the placeholder as the label) */
+  label: string;
+  /** Figma: Hint */
+  hint?: string;
+  /** Figma: State=Error with the Error message */
+  error?: string;
+}
+
+/** Figma: Text input */
+export function TextInput({ label, hint, error, id, className, ...rest }: TextInputProps) {
+  const auto = useId();
+  const inputId = id ?? auto;
+  const hintId = hint ? `${inputId}-hint` : undefined;
+  const errorId = error ? `${inputId}-error` : undefined;
+  return (
+    <div className={["ds-field", className].filter(Boolean).join(" ")}>
+      <label className="ds-field__label" htmlFor={inputId}>{label}</label>
+      {hint && <p id={hintId} className="ds-field__hint">{hint}</p>}
+      {error && <ErrorMessage id={errorId!}>{error}</ErrorMessage>}
+      <input
+        id={inputId}
+        className={["ds-text-input", error && "ds-text-input--error"].filter(Boolean).join(" ")}
+        aria-describedby={[hintId, errorId].filter(Boolean).join(" ") || undefined}
+        aria-invalid={error ? true : undefined}
+        {...rest}
+      />
+    </div>
+  );
+}

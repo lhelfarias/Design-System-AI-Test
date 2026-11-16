@@ -1,3 +1,6 @@
 packages/tokens/dist/
 node_modules/
 .DS_Store
+packages/react/dist/
+packages/react/storybook-static/
+packages/react/screenshots/

@@ -1,0 +1,17 @@
+.ds-summary-list { margin: 0; container-type: inline-size; }
+.ds-summary-list__row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) auto;
+  gap: var(--space-inline-md);
+  padding: var(--space-stack-md) 0;
+  border-bottom: var(--border-width-1) solid var(--color-border-subtle);
+}
+.ds-summary-list__key { font: var(--typography-label); }
+.ds-summary-list__value, .ds-summary-list__action { margin: 0; font: var(--typography-body); }
+.ds-summary-list__action a { color: var(--color-text-link); }
+
+/* Compact variant (pending in the Figma library): key left, value right. */
+@container (max-width: 400px) {
+  .ds-summary-list__row { grid-template-columns: auto auto; justify-content: space-between; }
+  .ds-summary-list__value { text-align: right; }
+}

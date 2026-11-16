@@ -1,0 +1,13 @@
+.ds-container { width: 100%; max-width: calc(var(--layout-max-width) + 2 * var(--layout-margin-large)); margin: 0 auto; padding: 0 var(--layout-margin-large); }
+@media (max-width: 599px) { .ds-container { padding: 0 var(--layout-margin-compact); } }
+
+.ds-title-band { background: var(--color-surface-band); color: var(--color-text-default); padding: var(--layout-section-gap-compact) 0; }
+.ds-title-band__inner { display: flex; flex-direction: column; gap: var(--space-stack-lg); }
+@media (max-width: 599px) { .ds-title-band { padding: var(--space-stack-xl) 0; } }
+
+.ds-panel { border: var(--border-width-1) solid var(--color-border-subtle); border-radius: var(--radius-container); }
+.ds-panel--pad-lg { padding: var(--space-inset-lg); }
+.ds-panel--pad-xl { padding: var(--space-inset-xl); }
+.ds-panel--solid { background: var(--color-surface-default); }
+/* Glass: in Figma the native Glass effect; in CSS the blur token (README: Glass surfaces). */
+.ds-panel--glass { background: var(--color-surface-glass); backdrop-filter: blur(var(--effect-blur-surface)); }

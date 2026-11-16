@@ -1,0 +1,23 @@
+.ds-select { position: relative; width: 100%; max-width: 20rem; }
+.ds-select__control {
+  appearance: none;
+  width: 100%;
+  min-height: var(--size-target-min);
+  padding: 0 calc(var(--select-padding-x) + var(--select-icon-size) + var(--select-gap)) 0 var(--select-padding-x);
+  border: var(--select-border-width) solid var(--color-border-control);
+  border-radius: var(--select-radius);
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  font: var(--select-typography);
+}
+.ds-select__control--error { border-color: var(--color-border-error); border-width: var(--select-border-width-error); }
+.ds-select__icon {
+  position: absolute;
+  right: var(--select-padding-x);
+  top: 50%;
+  width: var(--select-icon-size);
+  height: var(--select-icon-size);
+  transform: translateY(-50%);
+  color: var(--color-text-default);
+  pointer-events: none;
+}
