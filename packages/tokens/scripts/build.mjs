@@ -26,12 +26,20 @@ function toFontFamily(str) {
   return str.split(",").map((s) => s.trim());
 }
 
+// Tokens Studio usa porcentaje (150%) para que Figma lo lea como multiplo; DTCG espera un numero multiplicador (1.5).
+function toLineHeight(str) {
+  const m = String(str).match(/^(\d+(?:\.\d+)?)%$/);
+  if (!m) throw new Error(`Interlineado no valido (se espera un porcentaje): ${str}`);
+  return Math.round(Number(m[1])) / 100;
+}
+
 function convertValue(type, value) {
   if (typeof value === "string" && ALIAS.test(value)) return value; // alias intacto
   switch (type) {
     case "color": return toColor(value);
     case "dimension": return toDimension(value);
     case "fontFamily": return toFontFamily(value);
+    case "lineHeights": return toLineHeight(value);
     case "typography":
       return Object.fromEntries(
         Object.entries(value).map(([k, v]) => {
@@ -48,7 +56,7 @@ function convertValue(type, value) {
 function convertTree(node, inheritedType) {
   const type = node.$type ?? inheritedType;
   if (Object.prototype.hasOwnProperty.call(node, "$value")) {
-    const out = { ...node, $type: type, $value: convertValue(type, node.$value) };
+    const out = { ...node, $type: type === "lineHeights" ? "number" : type, $value: convertValue(type, node.$value) };
     return out;
   }
   const out = {};

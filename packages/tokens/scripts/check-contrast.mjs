@@ -53,6 +53,9 @@ add("radio borde sobre fondo", "radio.border", "radio.background", UI);
 add("radio marcado: borde sobre superficie", "radio.border-checked", "color.surface.default", UI);
 add("radio punto sobre fondo", "radio.dot", "radio.background", UI);
 add("radio etiqueta sobre surface.default", "radio.label", "color.surface.default", TEXT);
+add("checkbox borde de error sobre surface.default", "checkbox.border-error", "color.surface.default", UI);
+add("radio borde de error sobre surface.default", "radio.border-error", "color.surface.default", UI);
+add("select hint sobre surface.default", "select.hint", "color.surface.default", TEXT);
 add("radio foco sobre surface.default", "radio.focus-ring", "color.surface.default", UI);
 
 // Tag
