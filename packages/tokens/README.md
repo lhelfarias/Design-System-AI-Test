@@ -45,3 +45,15 @@ Token descriptions are 8 words at most. Details go in this file.
 - Error border of 2 px on fields (normal is 1 px), so errors do not rely on color alone. If sizes are added, each size defines its own width.
 - Focus ring: 2 px wide, 2 px offset. Radius: `focus.ring.radius` on controls (6 + 4 px) and `focus.ring.radius-container` on containers such as Card (2 + 4 px).
 - Clickable card: the title link is stretched over the whole card; buttons inside stay above it. Never wrap the card in a link that contains buttons. Source: https://inclusive-components.design/cards/
+
+## CSS variables
+
+`npm run build` writes `css/tokens.css` with Style Dictionary (`scripts/build-css.mjs`). The file is generated: edit `tokens.json`, never the CSS.
+
+- One variable per token, same path as in Figma: `color/text/default` → `--color-text-default`.
+- Aliases stay as `var(--…)`, so the layers survive: `--button-radius: var(--radius-control)`.
+- Typography tokens are a `font` shorthand: `font: var(--typography-body)`. Letter spacing is 0 in every style and is not emitted.
+- Line height is unitless in CSS (`150%` in `tokens.json` → `1.5`).
+- The build fails if a variable points to one that does not exist.
+
+Use system variables in pages and component variables inside their component. Do not use reference variables in components.

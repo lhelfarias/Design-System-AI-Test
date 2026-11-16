@@ -2,10 +2,18 @@
   "name": "@mi-design-system/tokens",
   "version": "0.1.0",
   "private": true,
-  "description": "Design tokens (source: Tokens Studio tokens.json) and strict DTCG 2025.10 copy",
+  "description": "Design tokens (source: Tokens Studio tokens.json), strict DTCG 2025.10 copy and CSS variables",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-css.mjs",
+    "build:css": "node scripts/build-css.mjs",
     "check": "node scripts/check-contrast.mjs",
-    "test": "node scripts/build.mjs && node scripts/check-contrast.mjs"
-  }
+    "test": "npm run build && node scripts/check-contrast.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.8.0"
+  },
+  "files": [
+    "tokens.json",
+    "css"
+  ]
 }
