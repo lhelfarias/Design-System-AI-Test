@@ -64,7 +64,7 @@ const val = (p) => {
 const TEXT = 4.5;
 const UI = 3;
 const pairs = []; // [description, fgToken, bgToken, minimum]
-const add = (desc, fg, bg, min) => pairs.push([desc, fg, bg, min]);
+const add = (desc, fg, bg, min, onlyMode) => pairs.push([desc, fg, bg, min, onlyMode]);
 
 // System text on allowed surfaces
 for (const bg of ["color.surface.default", "color.surface.subtle", "color.surface.brand-subtle"]) {
@@ -134,15 +134,23 @@ for (const fg of ["color.text.default", "color.text.muted", "color.text.link", "
   add(`${fg} on surface.glass`, fg, "color.surface.glass", TEXT);
 }
 
+// Title band: always used with its frame in tv mode, so it is only checked there.
+for (const fg of ["color.text.default", "color.text.muted", "color.text.link"]) {
+  add(`${fg} on surface.band`, fg, "color.surface.band", TEXT, "tv");
+}
+add("button.primary background on surface.band", "button.primary.background", "color.surface.band", UI, "tv");
+add("focus ring on surface.band", "color.border.focus", "color.surface.band", UI, "tv");
+
 // Solid warning with default text on top
 add("feedback.warning.solid with text.default on top", "color.text.default", "color.feedback.warning.solid", TEXT);
 
 // Translucent colors are flattened over the lightest page background of the mode (worst case for light text).
-const run = (label) => {
+const run = (label, mode) => {
   const base = composite(val("color.surface.page-start"), "#FFFFFF");
   let failed = 0;
   console.log(`\n== ${label} ==`);
-  for (const [desc, fg, bg, min] of pairs) {
+  for (const [desc, fg, bg, min, onlyMode] of pairs) {
+    if (onlyMode && onlyMode !== mode) continue;
     const b = composite(val(bg), base);
     const f = composite(val(fg), b);
     const ratio = contrast(f, b);
@@ -150,13 +158,13 @@ const run = (label) => {
     if (!ok) failed++;
     console.log(`${ok ? "OK  " : "FAIL "}  ${ratio.toFixed(2).padStart(5)}:1  (min ${min})  ${desc}  [${f} / ${b}]`);
   }
-  console.log(`${pairs.length} pairs checked, ${failed} failing.`);
+  console.log(`${pairs.filter((p) => !p[4] || p[4] === mode).length} pairs checked, ${failed} failing.`);
   return failed;
 };
 
-let failed = run("default mode");
+let failed = run("default mode", "default");
 for (const m of MODES) {
   t = resolveMode(flat, m);
-  failed += run(`${m} mode`);
+  failed += run(`${m} mode`, m);
 }
 process.exit(failed ? 1 : 0);

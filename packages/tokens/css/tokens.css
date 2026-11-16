@@ -85,7 +85,7 @@
   --layout-height-540: 540px;
   --layout-scale-1-05: 1.05;
 
-  /* system (111). Meaning. Use these in pages and components. */
+  /* system (112). Meaning. Use these in pages and components. */
   --color-text-default: var(--color-neutral-900);
   --color-text-muted: var(--color-neutral-600);
   --color-text-inverse: var(--color-neutral-0);
@@ -100,6 +100,7 @@
   --color-surface-page-start: var(--color-neutral-100);
   --color-surface-page-end: var(--color-neutral-300);
   --color-surface-glass: var(--color-white-alpha-75);
+  --color-surface-band: var(--color-blue-800);
   --color-border-subtle: var(--color-neutral-300);
   --color-border-control: var(--color-neutral-600);
   --color-border-focus: var(--color-blue-500);
@@ -298,7 +299,7 @@
   --error-message-gap: var(--space-stack-xs);
 }
 
-/* tv mode (41 overrides). Set data-theme="tv" on the root element. */
+/* tv mode (42 overrides). Set data-theme="tv" on the root element. */
 [data-theme="tv"] {
   --color-text-default: var(--color-neutral-50);
   --color-text-muted: var(--color-neutral-300);
@@ -314,6 +315,7 @@
   --color-surface-page-start: var(--color-blue-800);
   --color-surface-page-end: var(--color-blue-950);
   --color-surface-glass: var(--color-white-alpha-8);
+  --color-surface-band: var(--color-blue-800);
   --color-border-subtle: var(--color-white-alpha-16);
   --color-border-control: var(--color-neutral-300);
   --color-border-focus: var(--color-neutral-0);

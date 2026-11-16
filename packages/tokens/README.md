@@ -77,3 +77,8 @@ A mode gives the same token another value. Components do not change: they keep u
 - Border: 1px `color.border.subtle`.
 - No decorative shapes behind glass.
 - Do not use glass behind forms or long text; use `color.surface.default` there.
+
+## Title band
+
+- `color.surface.band`: navy band for the page title and product hero. Always set its frame to `tv` mode so text, links, buttons and focus inside it switch to their dark versions.
+- Contrast for the band is checked only in `tv` mode.
