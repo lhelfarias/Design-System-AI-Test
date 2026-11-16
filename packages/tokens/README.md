@@ -1,45 +1,46 @@
 # Tokens
 
-`tokens.json` es la **única fuente de verdad**. Tokens Studio lo lee y lo escribe (modo "File").
-No edites los archivos de `dist/` a mano: se generan.
+`tokens.json` is the **single source of truth**. Tokens Studio reads and writes it ("File" mode).
+Do not edit the files in `dist/` by hand: they are generated.
 
-## Capas
+## Layers
 
-| Set | Contenido | Regla |
+| Set | Contents | Rule |
 |---|---|---|
-| `reference` | Valores crudos (rampas de color, escala de 4 px, tamaños) | No se usa directo en componentes |
-| `system` | Significado (`color.text.default`, `space.inset.md`) | Solo apunta a `reference` |
-| `component` | Decisiones propias de un componente (`button.primary.background`) | Solo apunta a `system` |
+| `reference` | Raw values (color ramps, 4 px scale, sizes) | Never used directly in components |
+| `system` | Meaning (`color.text.default`, `space.inset.md`) | Points only to `reference` |
+| `component` | Decisions specific to one component (`button.primary.background`) | Points only to `system` |
 
-Estado en Tokens Studio: `reference` como *Source*, `system` y `component` como *Enabled*.
+Tokens Studio set states: `reference` as *Source*, `system` and `component` as *Enabled*.
 
-## Comandos
+## Commands
 
 ```
-npm run build   # genera dist/dtcg-2025.10/ y dist/tokens.resolved.json
-npm run check   # verifica contraste WCAG 2.2 de los pares de color
-npm test        # ambos; falla si un alias está roto o un par no cumple
+npm run build   # generates dist/dtcg-2025.10/ and dist/tokens.resolved.json
+npm run check   # checks WCAG 2.2 contrast of the color pairs
+npm test        # both; fails on a broken alias or a failing pair
 ```
 
-Requiere Node 18 o superior. No tiene dependencias.
+Requires Node 18 or later. No dependencies.
 
-## Cuándo crear un token de componente
+## When to create a component token
 
-Solo cuando el componente toma una decisión propia: un tamaño, un padding, un color de variante (Primary, Secondary, Tag success).
-Si el componente usa el mismo valor y el mismo significado que system, usa la variable de system directamente.
-Ejemplos: fondo de campo → `color.surface.default`; borde de control → `color.border.control`; foco → `focus.ring.color`; deshabilitado → `color.action.disabled.*`; alto mínimo → `size.target-min`.
-Motivo: cada variable de más es una opción más para quien diseña y para el agente de Figma, y más texto que el agente lee en cada tarea.
+Only when the component makes its own decision: a size, a padding, a variant color (Primary, Secondary, Tag success).
+If the component uses the same value with the same meaning as system, it uses the system variable directly.
+Examples: field background → `color.surface.default`; control border → `color.border.control`; focus → `focus.ring.color`; disabled → `color.action.disabled.*`; minimum height → `size.target-min`.
+Why: every extra variable is one more option for designers and for the Figma agent, and more text the agent reads on every task.
 
-Las descripciones de los tokens tienen como máximo 8 palabras. El detalle va en esta sección.
+Token descriptions are 8 words at most. Details go in this file.
 
-## Reglas de uso que no se pueden deducir de los valores
+## Usage rules that cannot be inferred from the values
 
-- `color.text.muted` (#6B6B6B) no se usa sobre azul 100 o más oscuro (4.05:1); usar `color.text.brand`.
-- `color.border.subtle` (#DDDDDD, 1.36:1) es solo decorativo; los controles usan `color.border.control`.
-- `color.feedback.warning.solid` (#F5A623) nunca es el único indicador.
-- Los tokens deshabilitados están exentos de contraste (WCAG 1.4.3).
-- `neutral.600` da 5.33:1 sobre blanco y 4.05:1 sobre azul 100: por eso no se usa como texto sobre azul 100 o más oscuro.
-- `amber.500` da 2.03:1 sobre blanco: solo como relleno con texto oscuro encima (7.75:1).
-- Interlineado en porcentaje (125%, 150%): en Figma un número sin unidad se lee como píxeles. WCAG 1.4.12 pide tolerar 1.5.
-- `size.target-min` (44 px) es una decisión del sistema: WCAG 2.2 AA exige 24 px y AAA 44 px.
-- Borde de error de 2 px en campos (el normal es 1 px), para que el error no dependa solo del color. Si se agregan tamaños, cada tamaño define su grosor.
+- `color.text.muted` (#6B6B6B) is not used on blue 100 or darker (4.05:1); use `color.text.brand`.
+- `color.border.subtle` (#DDDDDD, 1.36:1) is decorative only; controls use `color.border.control`.
+- `color.feedback.warning.solid` (#F5A623) is never the only indicator.
+- Disabled tokens are exempt from contrast requirements (WCAG 1.4.3).
+- `neutral.600` is 5.33:1 on white and 4.05:1 on blue 100, so it is not used as text on blue 100 or darker.
+- `amber.500` is 2.03:1 on white: fill only, with dark text on top (7.75:1).
+- Line height as a percentage (125%, 150%): Figma reads a unitless number as pixels. WCAG 1.4.12 requires tolerating 1.5.
+- `size.target-min` (44 px) is a system decision: WCAG 2.2 AA requires 24 px, AAA 44 px.
+- Error border of 2 px on fields (normal is 1 px), so errors do not rely on color alone. If sizes are added, each size defines its own width.
+- Focus ring: 2 px wide, 2 px offset, radius `focus.ring.radius` (control radius + 4 px).
