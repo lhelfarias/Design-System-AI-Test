@@ -48,6 +48,13 @@ Six example screens, switched with the URL hash (`#product`, `#store`, `#music`,
 
 Differences from Figma: Music shows the site header on top so the demo can move between screens; the TV versions are not built in code yet.
 
+## Storybook online
+
+The component catalog is published to GitHub Pages on every change to main (`.github/workflows/storybook.yml`):
+https://lhelfarias.github.io/Design-System-AI-Test/
+
+One-time setup (repository owner): Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+
 ## Checks on GitHub
 
 `.github/workflows/checks.yml` runs on every pull request and on main:
