@@ -1,6 +1,6 @@
 # Components
 
-Status: **code** = in `packages/react` and Figma; **Figma** = only in the Figma library for now.
+Status: **code** = in `packages/react` and Figma; **Figma** = only in the Figma library for now. Components marked code have their React usage and source link in their Figma description.
 
 | Component | Status | Properties | Use for | Accessibility |
 |---|---|---|---|---|
