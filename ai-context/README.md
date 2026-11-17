@@ -8,6 +8,7 @@ Read this folder before creating screens, components or code with this design sy
 2. `tokens.md`: where the values are and how they are named.
 3. `components.md`: the components that exist, their properties and when to use them.
 4. `patterns.md`: page anatomy, surfaces and device rules.
+   - Generated foundations (every color in both modes, type, spacing): `docs/foundations/`.
 5. `figma.md`: how to work in the Figma files with the Figma connector or plugin API.
 
 ## Sources of truth

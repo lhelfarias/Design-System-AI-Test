@@ -2,6 +2,10 @@
 
 Status: **planned, not done yet.** Today the library lives in this repository only. This page records the decision and the steps, so it can be done later without new research.
 
+## Package names
+
+The packages are named `@mi-design-system/tokens` and `@mi-design-system/react` today. GitHub Packages needs the scope to match the owner, so they will be renamed to `@lhelfarias/tokens` and `@lhelfarias/react` when they are published.
+
 ## What is shared and what is not
 
 | Part | Path | Shared with teams |

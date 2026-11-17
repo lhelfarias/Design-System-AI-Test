@@ -62,4 +62,4 @@ How the Ataraxia example screens are built: which surface goes where, and how th
 
 ## Related
 
-- [Layout](layout.md) · [Navigation](navigation.md) · [Motion](motion.md) · `packages/tokens/README.md` (Glass surfaces, Modes)
+- [Layout](layout.md) · [Navigation](navigation.md) · [Motion](motion.md) · [Foundations](foundations/README.md) (generated colors, typography, spacing) · `packages/tokens/README.md` (Glass surfaces, Modes)
