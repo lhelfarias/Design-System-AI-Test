@@ -7,7 +7,8 @@
     "build": "node scripts/build.mjs && node scripts/build-css.mjs",
     "build:css": "node scripts/build-css.mjs",
     "check": "node scripts/check-contrast.mjs",
-    "test": "npm run build && node scripts/check-contrast.mjs"
+    "test": "npm run build && node scripts/check-contrast.mjs && node scripts/build-docs.mjs",
+    "docs": "node scripts/build-docs.mjs"
   },
   "devDependencies": {
     "style-dictionary": "^5.8.0"

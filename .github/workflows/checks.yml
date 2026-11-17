@@ -26,9 +26,9 @@ jobs:
       - run: npm ci
       - name: Build tokens and check contrast in every mode
         run: npm test
-      - name: Generated CSS matches tokens.json
-        # If this fails, run `npm run build` in packages/tokens and commit css/tokens.css.
-        run: git diff --exit-code -- css/tokens.css
+      - name: Generated CSS and docs match tokens.json
+        # If this fails, run `npm test` in packages/tokens and commit the generated files.
+        run: git diff --exit-code -- css/tokens.css docs ../../docs/foundations
 
   react:
     name: React (types + build + accessibility)

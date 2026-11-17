@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Dimensions } from "../FoundationDocs";
+
+<Meta title="Foundations/Spacing and layout" />
+
+# Spacing and layout
+
+All spacing comes from a 4 px scale. Use system names by direction:
+
+- **inset**: padding inside a box.
+- **stack**: vertical gap between items.
+- **inline**: horizontal gap between items.
+
+## Spacing
+
+<Dimensions prefix="space." bars />
+
+## Sizes
+
+`size.target-min` (44 px) is the minimum target for anything you can click or tap. WCAG 2.2 (2.5.8) asks for 24 px; 44 px is this system's decision.
+
+<Dimensions prefix="size." bars />
+
+## Radius
+
+<Dimensions prefix="radius." />
+
+## Focus ring
+
+<Dimensions prefix="focus." />
+
+## Layout
+
+Window size classes follow Material Design; values are decisions of this system. TV is a context, not a breakpoint.
+
+<Dimensions prefix="layout." />

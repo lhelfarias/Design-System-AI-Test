@@ -1,7 +1,9 @@
 // Checks key color pairs against WCAG 2.2 using resolved values from tokens.json.
 // Thresholds: text 4.5:1 (WCAG 1.4.3), UI components and focus 3:1 (WCAG 1.4.11).
 // Disabled components are exempt and not checked.
-import { loadSets, flatten, resolveAll, resolveMode, composite, contrast, MODES } from "./lib.mjs";
+import { writeFileSync, mkdirSync } from "node:fs";
+import { join } from "node:path";
+import { ROOT, loadSets, flatten, resolveAll, resolveMode, composite, contrast, MODES } from "./lib.mjs";
 
 const flat = flatten(loadSets());
 let t = resolveAll(flat);
@@ -145,6 +147,7 @@ add("focus ring on surface.band", "color.border.focus", "color.surface.band", UI
 add("feedback.warning.solid with text.default on top", "color.text.default", "color.feedback.warning.solid", TEXT);
 
 // Translucent colors are flattened over the lightest page background of the mode (worst case for light text).
+const results = []; // written to dist/contrast.json for the generated docs
 const run = (label, mode) => {
   const base = composite(val("color.surface.page-start"), "#FFFFFF");
   let failed = 0;
@@ -156,6 +159,7 @@ const run = (label, mode) => {
     const ratio = contrast(f, b);
     const ok = ratio >= min;
     if (!ok) failed++;
+    results.push({ mode, pair: desc, foreground: fg, background: bg, ratio: Number(ratio.toFixed(2)), minimum: min, pass: ok });
     console.log(`${ok ? "OK  " : "FAIL "}  ${ratio.toFixed(2).padStart(5)}:1  (min ${min})  ${desc}  [${f} / ${b}]`);
   }
   console.log(`${pairs.filter((p) => !p[4] || p[4] === mode).length} pairs checked, ${failed} failing.`);
@@ -167,4 +171,6 @@ for (const m of MODES) {
   t = resolveMode(flat, m);
   failed += run(`${m} mode`, m);
 }
+mkdirSync(join(ROOT, "dist"), { recursive: true });
+writeFileSync(join(ROOT, "dist", "contrast.json"), JSON.stringify(results, null, 2) + "\n");
 process.exit(failed ? 1 : 0);

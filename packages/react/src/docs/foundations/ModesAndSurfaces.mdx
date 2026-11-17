@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ModeSample, Dimensions } from "../FoundationDocs";
+
+<Meta title="Foundations/Modes and surfaces" />
+
+# Modes and surfaces
+
+## Modes
+
+A mode gives the **same variable** another value. Components never change; the screen, or one block of it, switches mode.
+
+- **default**: light theme for desktop and mobile.
+- **tv**: navy, glass surfaces, light text and a white focus ring. Used for TV screens and for the title band of light pages.
+
+In code: `data-theme="tv"` on any element. In Figma: set the frame's mode for the `system` collection to tv.
+
+<ModeSample />
+
+## Surfaces
+
+| Surface | Token | Use |
+|---|---|---|
+| Canvas | `color.surface.subtle` | Page background |
+| Panel | `color.surface.default` + `color.border.subtle` | Forms and long text |
+| Glass | `color.surface.glass` + blur | Cards, stats, charts, summaries. Never behind forms or long text |
+| Title band | `color.surface.band`, frame in tv mode | Breadcrumbs, page title and the main control |
+
+Glass in CSS is `background: var(--color-surface-glass); backdrop-filter: blur(var(--effect-blur-surface))`. In Figma it is the native Glass effect with fixed values (radius 40, refraction 0.6, depth 15, light −45° at 0.8, dispersion 0.15, splay 0.4), because the effect cannot be bound to a variable.
+
+<Dimensions prefix="effect." />

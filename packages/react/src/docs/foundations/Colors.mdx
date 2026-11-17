@@ -1,0 +1,50 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ReferencePalette, SystemColors, ContrastSummary } from "../FoundationDocs";
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Every color is a variable. Pick by **meaning**, never by hex. Same names in Figma (`color/text/default`) and CSS (`var(--color-text-default)`). Values on this page are read live from `tokens.css`; the list is generated from `tokens.json`.
+
+## How to choose a color
+
+1. Pages and layouts: **system** colors (text, surface, border, action, feedback).
+2. Inside a component: its **component** tokens; they point to system.
+3. Never use **reference** colors in screens or components; they only feed system tokens.
+4. Text 4.5:1 on its surface; borders and focus 3:1. Checked on every pull request.
+5. Dark areas (TV, title band) are not new colors: the same variables switch to the **tv** mode.
+
+## Reference palette
+
+Raw values. Only system tokens point to them.
+
+<ReferencePalette />
+
+## Text
+
+<SystemColors group="text" />
+
+## Surface
+
+<SystemColors group="surface" />
+
+## Border
+
+<SystemColors group="border" />
+
+## Action
+
+<SystemColors group="action" />
+
+## Feedback
+
+<SystemColors group="feedback" />
+
+## Focus
+
+<SystemColors group="focus" />
+
+## Contrast
+
+<ContrastSummary />
