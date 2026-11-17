@@ -1,4 +1,4 @@
-.help-layout { display: grid; grid-template-columns: minmax(0, var(--layout-reading-width)) var(--layout-sidebar-width); gap: var(--layout-gutter-large); align-items: start; }
+.help-layout { display: grid; grid-template-columns: minmax(0, calc(var(--layout-reading-width) + 2 * var(--space-inset-xl))) minmax(0, 1fr); gap: var(--layout-gutter-large); align-items: start; }
 .help-article { font: var(--typography-body); }
 .help-article h2 { margin: var(--space-stack-xl) 0 var(--space-stack-sm); font: var(--typography-heading-2); scroll-margin-top: var(--space-stack-lg); }
 .help-article h2:first-child { margin-top: 0; }
