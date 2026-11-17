@@ -4,7 +4,7 @@
   gap: var(--space-stack-md);
   padding: var(--space-inset-xl) var(--layout-margin-large);
   background: var(--color-surface-subtle);
-  border-top: var(--border-width-1) solid var(--color-border-subtle);
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
 }
 .ds-footer__links { display: flex; flex-wrap: wrap; gap: var(--space-inline-lg); margin: 0; padding: 0; list-style: none; font: var(--typography-body-sm); }
 .ds-footer__links a { color: var(--color-text-link); }

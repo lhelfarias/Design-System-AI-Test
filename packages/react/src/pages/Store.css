@@ -1,4 +1,4 @@
-.store-layout { display: grid; grid-template-columns: calc(var(--space-16) * 3.5) minmax(0, 1fr); gap: var(--layout-gutter-large); align-items: start; }
+.store-layout { display: grid; grid-template-columns: var(--layout-sidebar-width) minmax(0, 1fr); gap: var(--layout-gutter-large); align-items: start; }
 .store-filters { display: flex; flex-direction: column; gap: var(--space-stack-lg); }
 .store-filters__title { margin: 0; font: var(--typography-heading-4); }
 .store-results { display: flex; flex-direction: column; gap: var(--space-stack-xl); }

@@ -9,7 +9,7 @@
 .product-hero__actions a { text-decoration: none; }
 .product-hero__media { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: var(--radius-container); color: var(--color-text-brand); }
 .product-hero__media svg { width: 40%; height: auto; }
-.product-section { padding: var(--layout-section-gap-compact) 0; border-top: var(--border-width-1) solid var(--color-border-subtle); }
+.product-section { padding: var(--layout-section-gap-compact) 0; border-top: var(--border-width-default) solid var(--color-border-subtle); }
 .product-section:nth-of-type(2) { border-top: 0; }
 .product-section > .ds-container > * { max-width: calc(var(--layout-reading-width) * 1.4); margin-left: auto; margin-right: auto; }
 .product-h2 { margin: 0 0 var(--space-stack-lg); font: var(--typography-heading-2); }

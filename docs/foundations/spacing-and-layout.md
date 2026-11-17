@@ -37,6 +37,13 @@ All spacing comes from a 4 px scale in reference (`space.*`). Use the system nam
 | `size.target-min` | 44px | `space.11` | `--size-target-min` |
 | `size.indicator` | 24px | `space.6` | `--size-indicator` |
 | `size.icon` | 20px | `space.5` | `--size-icon` |
+| `size.dot` | 12px | `space.3` | `--size-dot` |
+| `size.track` | 4px | `space.1` | `--size-track` |
+| `size.row` | 48px | `space.12` | `--size-row` |
+| `size.media.xs` | 40px | `space.10` | `--size-media-xs` |
+| `size.media.sm` | 56px | `dimension.56` | `--size-media-sm` |
+| `size.media.md` | 160px | `dimension.160` | `--size-media-md` |
+| `size.media.lg` | 240px | `dimension.240` | `--size-media-lg` |
 
 `size.target-min` (44 px) is the minimum touch and click target (WCAG 2.5.8 asks 24 px; 44 px is this system's decision).
 
@@ -95,6 +102,8 @@ Window size classes follow Material Design; values are decisions of this system.
 | `layout.tv.safe-area-x` | 48px | `space.12` | `--layout-tv-safe-area-x` |
 | `layout.tv.safe-area-y` | 24px | `space.6` | `--layout-tv-safe-area-y` |
 | `layout.tv.focus-scale` | 1.05 | `layout.scale.1-05` | `--layout-tv-focus-scale` |
+| `layout.card-min-width` | 288px | `dimension.288` | `--layout-card-min-width` |
+| `layout.sidebar-width` | 224px | `dimension.224` | `--layout-sidebar-width` |
 
 ## Effects
 

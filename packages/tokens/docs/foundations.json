@@ -1761,6 +1761,90 @@
       "figma": "system/size/icon"
     },
     {
+      "path": "size.dot",
+      "set": "system",
+      "type": "dimension",
+      "description": "Radio inner dot.",
+      "alias": "space.3",
+      "value": "12px",
+      "tvAlias": null,
+      "tv": "12px",
+      "css": "--size-dot",
+      "figma": "system/size/dot"
+    },
+    {
+      "path": "size.track",
+      "set": "system",
+      "type": "dimension",
+      "description": "Progress and volume track height.",
+      "alias": "space.1",
+      "value": "4px",
+      "tvAlias": null,
+      "tv": "4px",
+      "css": "--size-track",
+      "figma": "system/size/track"
+    },
+    {
+      "path": "size.row",
+      "set": "system",
+      "type": "dimension",
+      "description": "Data and track list row height.",
+      "alias": "space.12",
+      "value": "48px",
+      "tvAlias": null,
+      "tv": "48px",
+      "css": "--size-row",
+      "figma": "system/size/row"
+    },
+    {
+      "path": "size.media.xs",
+      "set": "system",
+      "type": "dimension",
+      "description": "Small cover in lists.",
+      "alias": "space.10",
+      "value": "40px",
+      "tvAlias": null,
+      "tv": "40px",
+      "css": "--size-media-xs",
+      "figma": "system/size/media/xs"
+    },
+    {
+      "path": "size.media.sm",
+      "set": "system",
+      "type": "dimension",
+      "description": "Cover in rows and mini player.",
+      "alias": "dimension.56",
+      "value": "56px",
+      "tvAlias": null,
+      "tv": "56px",
+      "css": "--size-media-sm",
+      "figma": "system/size/media/sm"
+    },
+    {
+      "path": "size.media.md",
+      "set": "system",
+      "type": "dimension",
+      "description": "Tile cover on TV and mobile.",
+      "alias": "dimension.160",
+      "value": "160px",
+      "tvAlias": null,
+      "tv": "160px",
+      "css": "--size-media-md",
+      "figma": "system/size/media/md"
+    },
+    {
+      "path": "size.media.lg",
+      "set": "system",
+      "type": "dimension",
+      "description": "Hero cover on desktop.",
+      "alias": "dimension.240",
+      "value": "240px",
+      "tvAlias": null,
+      "tv": "240px",
+      "css": "--size-media-lg",
+      "figma": "system/size/media/lg"
+    },
+    {
       "path": "radius.control",
       "set": "system",
       "type": "dimension",
@@ -1795,6 +1879,30 @@
       "tv": "9999px",
       "css": "--radius-pill",
       "figma": "system/radius/pill"
+    },
+    {
+      "path": "border.width.default",
+      "set": "system",
+      "type": "dimension",
+      "description": "Borders of panels, fields and dividers.",
+      "alias": "border.width.1",
+      "value": "1px",
+      "tvAlias": null,
+      "tv": "1px",
+      "css": "--border-width-default",
+      "figma": "system/border/width/default"
+    },
+    {
+      "path": "border.width.strong",
+      "set": "system",
+      "type": "dimension",
+      "description": "Controls, selected states and emphasis.",
+      "alias": "border.width.2",
+      "value": "2px",
+      "tvAlias": null,
+      "tv": "2px",
+      "css": "--border-width-strong",
+      "figma": "system/border/width/strong"
     },
     {
       "path": "focus.ring.width",
@@ -2215,6 +2323,30 @@
       "tv": 1.05,
       "css": "--layout-tv-focus-scale",
       "figma": "system/layout/tv/focus-scale"
+    },
+    {
+      "path": "layout.card-min-width",
+      "set": "system",
+      "type": "dimension",
+      "description": "Smallest usable card width.",
+      "alias": "dimension.288",
+      "value": "288px",
+      "tvAlias": null,
+      "tv": "288px",
+      "css": "--layout-card-min-width",
+      "figma": "system/layout/card-min-width"
+    },
+    {
+      "path": "layout.sidebar-width",
+      "set": "system",
+      "type": "dimension",
+      "description": "Side column for filters on desktop.",
+      "alias": "dimension.224",
+      "value": "224px",
+      "tvAlias": null,
+      "tv": "224px",
+      "css": "--layout-sidebar-width",
+      "figma": "system/layout/sidebar-width"
     },
     {
       "path": "effect.blur.surface",
