@@ -9,6 +9,7 @@
 - Meet WCAG 2.2 AA: visible labels, 44 px targets, visible focus ring, text contrast 4.5:1, UI contrast 3:1, color never the only signal.
 - Run the checks: `npm test` in `packages/tokens` (contrast in both modes) and in `packages/react` (axe at 1440 and 360 px).
 - Report what you could not bind or decide.
+- Keep documentation in its three places in the same task: repository (`docs/`, `ai-context/`), Figma (guides, "AI context" page) and Storybook (component pages). Foundations docs are generated: run `npm test` in packages/tokens, never edit them by hand.
 
 ## Never
 

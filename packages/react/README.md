@@ -1,14 +1,16 @@
 # @mi-design-system/react
 
+Package name today; `@lhelfarias/react` is the planned published name (docs/distribution.md).
+
 React components of the design system. Every style comes from the CSS variables in `packages/tokens/css/tokens.css`; no color, size or font is written by hand.
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
-| `npm run dev` | Opens the example page (cash advance simulator) |
-| `npm run storybook` | Storybook with every component and state; toolbar "Mode" switches to `tv` |
-| `npm test` | Type check, build, and accessibility check with axe-core (WCAG 2.2 A/AA rules) at 1440 and 360 px, including the error state |
+| `npm run dev` | Opens the six example screens (switch with the header links) |
+| `npm run storybook` | Storybook: Introduction, Foundations, Guidelines, one page per component, Patterns, For teams and AI; toolbar "Mode" switches to `tv` |
+| `npm test` | Type check, build, and accessibility check with axe-core (WCAG 2.2 A/AA rules) of the six screens at 1440 and 360 px, plus the simulator error state (13 cases) |
 
 `npm run a11y` also saves screenshots in `screenshots/` to compare with Figma.
 
@@ -59,10 +61,20 @@ One-time setup (repository owner): Settings → Pages → Build and deployment �
 
 `.github/workflows/checks.yml` runs on every pull request and on main:
 
-- **Tokens:** build, contrast in every mode, and a check that `css/tokens.css` matches `tokens.json`.
+- **Tokens:** build, contrast in every mode, and a check that `css/tokens.css` and the generated foundations docs match `tokens.json`.
 - **React:** typecheck, build and the axe check of every screen (13 cases). Screenshots are kept as a downloadable artifact for 14 days.
 
 A red cross on a pull request means: do not merge yet.
+
+## Storybook content
+
+- **Foundations** read `packages/tokens/docs/foundations.json` (generated) and show live swatches from `tokens.css`, with the tv mode side by side.
+- **Guidelines** show the files in `docs/` as they are; **For teams and AI** shows `ai-context/` and `docs/distribution.md`.
+- **Components:** `src/stories/components/*.stories.tsx`, one per component, with a docs description (when to use, when not, accessibility, tokens used, Figma and code links). Keep the text in sync with `ai-context/components.md` and the Figma guides.
+
+## Code Connect
+
+Templates for six components in `codeconnect/` (see its README). Publishing needs an Organization or Enterprise Figma plan; meanwhile each library component carries its React usage and a source link in its description.
 
 ## Notes
 
