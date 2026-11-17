@@ -2,7 +2,7 @@
 
 ## Files
 
-- Library "UI Kit – AI Test" (`M0pBcAnDr1iLJXpcyZ2Epa`): variables, text styles, components, guides (page "Componentes", section Guidelines), and page "AI context" with one frame per file of this folder.
+- Library "UI Kit – AI Test" (`M0pBcAnDr1iLJXpcyZ2Epa`): variables, text styles, components; page "Componentes" with guides (section Guidelines) and foundations (section DS - Foundations: Colors — Guide, Variables — Guide, Typography); page "Music App"; page "AI context" with one frame per file of this folder.
 - "Designs Examples" (`ue2fi6XJwFxbNvAsiCIIvN`): Ataraxia screens, one page per screen, frames "— Desktop", "— Mobile", "— TV".
 
 ## With the Figma connector (Plugin API)

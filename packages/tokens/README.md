@@ -16,12 +16,19 @@ Tokens Studio set states: `reference` as *Source*, `system` and `component` as *
 ## Commands
 
 ```
-npm run build   # generates dist/dtcg-2025.10/ and dist/tokens.resolved.json
-npm run check   # checks WCAG 2.2 contrast of the color pairs
-npm test        # both; fails on a broken alias or a failing pair
+npm run build   # dist/dtcg-2025.10/, dist/tokens.resolved.json, dist/modes.json and css/tokens.css
+npm run check   # WCAG 2.2 contrast of the color pairs, in every mode (writes dist/contrast.json)
+npm run docs    # docs/foundations/*.md and docs/foundations.json, generated from tokens.json
+npm test        # all three; fails on a broken alias, a failing pair or an undefined CSS variable
 ```
 
-Requires Node 18 or later. No dependencies.
+Requires Node 20 or later (CI uses 22). Dependency: Style Dictionary 5.
+
+## Generated documentation
+
+`npm test` regenerates `docs/foundations/` at the repository root (colors with default and tv values and every contrast result, typography, spacing and layout) and `packages/tokens/docs/foundations.json`, which Storybook's Foundations pages read. The Checks workflow fails if these files do not match `tokens.json`, so they are never out of date.
+
+Counts: 83 reference, 112 system and 97 component tokens. Figma shows 81, 103 and 82 variables because composite typography tokens become text styles, not variables.
 
 ## When to create a component token
 
@@ -83,3 +90,9 @@ A mode gives the same token another value. Components do not change: they keep u
 
 - `color.surface.band`: navy band for the page title and product hero. Always set its frame to `tv` mode so text, links, buttons and focus inside it switch to their dark versions.
 - Contrast for the band is checked only in `tv` mode.
+
+## Known gaps
+
+- **Scopes:** every Figma variable uses "All scopes", so every picker shows every variable. Planned: scopes per token (fills, text, gap, radius) set in `tokens.json` so Tokens Studio keeps them on export.
+- **Hidden reference:** reference variables are published, so designers can pick raw values. Planned: hide them from publishing, also from `tokens.json`.
+- **Motion tokens** are proposed in `docs/motion.md`, not yet in `tokens.json`.
