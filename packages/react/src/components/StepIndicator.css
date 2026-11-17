@@ -1,0 +1,20 @@
+/* Step indicator. System tokens only (no component tokens: every value is shared). */
+.ds-step-indicator { display: flex; flex-direction: column; gap: var(--space-stack-md); }
+.ds-step-indicator__segments { display: flex; gap: var(--space-inline-xs); margin: 0; padding: 0; list-style: none; }
+.ds-step-indicator__segment { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-stack-xs); }
+/* The bar: a non-text indicator, so it needs 3:1 against the surface (WCAG 1.4.11). */
+.ds-step-indicator__segment::before { content: ""; display: block; height: var(--size-track); border-radius: var(--radius-pill); background: var(--color-border-control); }
+.ds-step-indicator__segment--complete::before, .ds-step-indicator__segment--current::before { background: var(--color-action-primary-default); }
+/* Done and current share the bar color; the current step is told apart by its label (label style, brand color),
+   the heading "Step 2 of 3" and aria-current. A different shade would not hold in the tv mode. */
+.ds-step-indicator__label { font: var(--typography-body-sm); color: var(--color-text-muted); }
+.ds-step-indicator__segment--complete .ds-step-indicator__label { color: var(--color-text-default); }
+.ds-step-indicator__segment--current .ds-step-indicator__label { font: var(--typography-label); color: var(--color-text-brand); }
+.ds-step-indicator__segments--no-labels .ds-step-indicator__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ds-step-indicator__heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-inline-md); margin: 0; font: var(--typography-heading-3); color: var(--color-text-default); }
+.ds-step-indicator__heading:focus { outline: none; }
+.ds-step-indicator__counter { font: var(--typography-label); color: var(--color-text-brand); }
+.ds-step-indicator__total { color: var(--color-text-muted); }
+@media (max-width: 599px) {
+  .ds-step-indicator__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}

@@ -31,6 +31,7 @@ const cases = [
     { name: `${id}-mobile`, hash: id, width: 360, height: 800 },
   ]),
   { name: "simulator-error-mobile", hash: "simulator", width: 360, height: 800, act: async (p) => { await p.fill("input[inputmode=decimal]", "20"); await p.click("button[type=submit]"); } },
+  { name: "simulator-review-desktop", hash: "simulator", width: 1440, height: 1000, act: async (p) => { await p.click("button[type=submit]"); await p.click("button[type=submit]"); } },
 ];
 let total = 0;
 for (const c of cases) {

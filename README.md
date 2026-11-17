@@ -39,7 +39,7 @@ An example design system built end to end with AI and reviewed by people: tokens
 |---|---|
 | Tokens, modes (default, tv), CSS variables | Done. Components and pages use only system and component tokens; reference variables are hidden in the published Figma library |
 | Figma library and 18 designs (6 screens × desktop, mobile, TV) | Done |
-| React components (23) and 6 screens on desktop and mobile | Done |
+| React components (24) and 6 screens on desktop and mobile | Done |
 | TV screens in code | Next improvement |
 | Storybook online, checks on every pull request | Done |
 | Code Connect | Templates ready; publishing needs an Organization or Enterprise Figma plan |
