@@ -19,12 +19,15 @@ export function TitleBand({ children }: { children: ReactNode }) {
 }
 
 /** Panel for forms and long text (solid), or glass for cards and summaries. */
-export function Panel({ variant = "solid", as: Tag = "section", padding = "lg", children, ...rest }: {
+export function Panel({ variant = "solid", as: Tag = "section", padding = "lg", className, children, ...rest }: {
   variant?: "solid" | "glass";
   as?: ElementType;
   padding?: "lg" | "xl";
+  /** Extra classes from the page; they are added to the panel classes, never replace them. */
+  className?: string;
   children: ReactNode;
   [key: string]: unknown;
 }) {
-  return <Tag className={`ds-panel ds-panel--${variant} ds-panel--pad-${padding}`} {...rest}>{children}</Tag>;
+  const classes = ["ds-panel", `ds-panel--${variant}`, `ds-panel--pad-${padding}`, className].filter(Boolean).join(" ");
+  return <Tag className={classes} {...rest}>{children}</Tag>;
 }
