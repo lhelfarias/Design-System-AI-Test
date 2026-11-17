@@ -14,7 +14,7 @@ An example design system built end to end with AI and reviewed by people: tokens
 |---|---|
 | `packages/tokens` | `tokens.json` (source of truth), build scripts, `css/tokens.css` (generated), contrast check |
 | `packages/react` | React components, Storybook, the six example screens, accessibility check, Code Connect templates |
-| `docs/` | Guidelines: layout, navigation, motion, visual style and devices, distribution |
+| `docs/` | Guidelines: layout, navigation, motion, visual style and devices, distribution, next improvements |
 | `docs/foundations/` | Colors, typography, spacing and layout, **generated** from `tokens.json` |
 | `ai-context/` | Short rules and references for AI agents (also a page in the Figma library) |
 | `.github/workflows/` | Checks on every pull request; Storybook publishing |
@@ -37,10 +37,12 @@ An example design system built end to end with AI and reviewed by people: tokens
 
 | Part | Status |
 |---|---|
-| Tokens, modes (default, tv), CSS variables | Done |
+| Tokens, modes (default, tv), CSS variables | Done. Components and pages use only system and component tokens; reference variables are hidden in the published Figma library |
 | Figma library and 18 designs (6 screens × desktop, mobile, TV) | Done |
 | React components (23) and 6 screens on desktop and mobile | Done |
-| TV screens in code | Not started |
+| TV screens in code | Next improvement |
 | Storybook online, checks on every pull request | Done |
 | Code Connect | Templates ready; publishing needs an Organization or Enterprise Figma plan |
-| Package for other teams | Planned (`docs/distribution.md`) |
+| Package for other teams | Next improvement (`docs/distribution.md`) |
+
+What is left on purpose, and why: [docs/next-improvements.md](docs/next-improvements.md).

@@ -14,6 +14,7 @@
 - The Glass effect cannot be bound to a variable. Values: radius 40, refraction 0.6, depth 15, light −45° at 0.8, dispersion 0.15, splay 0.4.
 - Documentation blocks of the Figma agent (SPEC_BLOCK) cannot be created through the API; write guides as frames and ask for conversion.
 - After changing the library, a person must publish it and accept the update in design files.
+- Reference variables are hidden from publishing: design files see only system and component variables. After a Tokens Studio export that creates reference variables, hide the new ones before publishing.
 
 ## Checks before handing over
 

@@ -7,7 +7,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ["Introduction", "Foundations", ["Colors", "Typography", "Spacing and layout", "Modes and surfaces"], "Guidelines", ["Visual style and devices", "Layout", "Navigation", "Accessibility", "Motion"], "Components", "Patterns", ["Overview", "Screens"], "For teams and AI", ["Contributing", "Distribution", "AI context"]],
+        order: ["Introduction", "Foundations", ["Colors", "Typography", "Spacing and layout", "Modes and surfaces"], "Guidelines", ["Visual style and devices", "Layout", "Navigation", "Accessibility", "Motion"], "Components", "Patterns", ["Overview", "Screens"], "For teams and AI", ["Contributing", "Distribution", "AI context", "Next improvements"]],
       },
     },
     // Accessibility panel: fail the story test on violations instead of only reporting them.

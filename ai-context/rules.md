@@ -4,7 +4,7 @@
 
 - Use existing tokens: CSS variables in code, library variables in Figma. Bind every color, spacing, radius and type value.
 - Use existing components. If one is missing, propose it; it is created in the library (and in `packages/react`) before it is used in a screen.
-- Use system tokens in pages, component tokens inside their component. Never use reference tokens in components or pages; if a value has no system token, propose one. Padding 0 has no variable.
+- Use system tokens in pages, component tokens inside their component. Never use reference tokens in components or pages; if a value has no system token, propose one. Padding 0 has no variable. Propose a new token only when the value is shared; a value used once stays fixed and is documented.
 - Keep the Figma name and properties in code (Figma `Button` / `Type=Primary` → React `Button variant="primary"`).
 - Meet WCAG 2.2 AA: visible labels, 44 px targets, visible focus ring, text contrast 4.5:1, UI contrast 3:1, color never the only signal.
 - Run the checks: `npm test` in `packages/tokens` (contrast in both modes) and in `packages/react` (axe at 1440 and 360 px).
