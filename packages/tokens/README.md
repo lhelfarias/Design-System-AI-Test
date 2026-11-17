@@ -37,6 +37,8 @@ If the component uses the same value with the same meaning as system, it uses th
 Examples: field background → `color.surface.default`; control border → `color.border.control`; focus → `focus.ring.color`; disabled → `color.action.disabled.*`; minimum height → `size.target-min`.
 Why: every extra variable is one more option for designers and for the Figma agent, and more text the agent reads on every task.
 
+Create a variable only when the value is shared by more than one component or screen. A value used once stays fixed in that component and is listed as an exception in `docs/next-improvements.md`.
+
 Token descriptions are 8 words at most. Details go in this file.
 
 ## Borders and fixed sizes (v14)
@@ -103,6 +105,7 @@ A mode gives the same token another value. Components do not change: they keep u
 
 ## Known gaps
 
-- **Scopes:** every Figma variable uses "All scopes", so every picker shows every variable. Planned: scopes per token (fills, text, gap, radius) set in `tokens.json` so Tokens Studio keeps them on export.
-- **Hidden reference:** reference variables are published, so designers can pick raw values. Tested on 17 November with `color/neutral/300`: hidden in Figma, system aliases keep working in other files, and a Tokens Studio export keeps the setting. Planned: hide all reference variables once no component binds them directly (v14). Tokens Studio does not document a hide-from-publishing setting, so it is set in Figma.
+- **Scopes:** every Figma variable uses "All scopes", so every picker shows every variable. Tokens Studio 2.11+ can sync scopes; planned: scopes per group set in `tokens.json` so exports keep them.
+- **Hidden reference (done, 17 November):** all reference variables are hidden from publishing, so other files see only system and component variables. Tested first with `color/neutral/300`: aliases keep working in other files and a Tokens Studio export keeps the setting. Tokens Studio does not document this setting, so it is set in Figma; check it after every export that creates reference variables.
 - **Motion tokens** are proposed in `docs/motion.md`, not yet in `tokens.json`.
+- **Single-use variables:** `bar-chart.height`, `title-band.control-width` and `size.dot` were created before the shared-only rule. See `docs/next-improvements.md`.
