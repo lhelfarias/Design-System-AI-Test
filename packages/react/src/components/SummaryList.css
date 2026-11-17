@@ -4,7 +4,7 @@
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) auto;
   gap: var(--space-inline-md);
   padding: var(--space-stack-md) 0;
-  border-bottom: var(--border-width-1) solid var(--color-border-subtle);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
 .ds-summary-list__key { font: var(--typography-label); }
 .ds-summary-list__value, .ds-summary-list__action { margin: 0; font: var(--typography-body); }

@@ -7,4 +7,4 @@ Generated from `packages/tokens/tokens.json` on every build. Same content as the
 - [Typography](typography.md): nine styles and their use.
 - [Spacing, sizes and layout](spacing-and-layout.md): spacing scale, targets, radius, focus ring, grid, effects.
 
-Counts: 83 reference, 112 system, 97 component tokens.
+Counts: 90 reference, 123 system, 99 component tokens.

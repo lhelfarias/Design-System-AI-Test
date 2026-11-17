@@ -5,7 +5,7 @@ Three layers. Names are the same in Figma (slashes) and CSS (hyphens): `color/te
 | Layer | Contains | Use |
 |---|---|---|
 | reference | Raw values: color ramps, 4 px spacing scale, sizes, font family, white with alpha | Only inside system tokens |
-| system | Meaning: `color.text.*`, `color.surface.*`, `color.border.*`, `color.action.*`, `color.feedback.*`, `space.inset/stack/inline.*`, `size.*`, `radius.*`, `focus.ring.*`, `layout.*`, `typography.*`, `effect.blur.surface` | Pages and components |
+| system | Meaning: `color.text.*`, `color.surface.*`, `color.border.*`, `color.action.*`, `color.feedback.*`, `space.inset/stack/inline.*`, `size.*` (incl. `size.media.*`, `size.row`, `size.track`, `size.dot`), `radius.*`, `border.width.default/strong`, `focus.ring.*`, `layout.*`, `typography.*`, `effect.blur.surface` | Pages and components |
 | component | Decisions of one component: `button.*`, `text-input.*`, `select.*`, `checkbox.*`, `radio.*`, `tag.*`, `notification-banner.*`, `card.*`, `error-message.*`. Newer components (Product card, Stat card, music parts) use system tokens directly | Only inside that component |
 
 ## Modes

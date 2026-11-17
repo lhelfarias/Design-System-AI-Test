@@ -28,7 +28,7 @@ Requires Node 20 or later (CI uses 22). Dependency: Style Dictionary 5.
 
 `npm test` regenerates `docs/foundations/` at the repository root (colors with default and tv values and every contrast result, typography, spacing and layout) and `packages/tokens/docs/foundations.json`, which Storybook's Foundations pages read. The Checks workflow fails if these files do not match `tokens.json`, so they are never out of date.
 
-Counts: 83 reference, 112 system and 97 component tokens. Figma shows 81, 103 and 82 variables because composite typography tokens become text styles, not variables.
+Counts: 90 reference, 123 system and 99 component tokens. Figma shows 88, 114 and 84 variables because composite typography tokens become text styles, not variables.
 
 ## When to create a component token
 
@@ -38,6 +38,16 @@ Examples: field background → `color.surface.default`; control border → `colo
 Why: every extra variable is one more option for designers and for the Figma agent, and more text the agent reads on every task.
 
 Token descriptions are 8 words at most. Details go in this file.
+
+## Borders and fixed sizes (v14)
+
+- `border.width.default` (1 px) for panels, fields, dividers and table rows; `border.width.strong` (2 px) for controls, selected states and emphasis. Component `*.border-width` tokens point to these, never to `reference`.
+- Focus rings use `focus.ring.width`, not a border width.
+- `size.media.xs/sm/md/lg` (40, 56, 160, 240): covers and images. `size.track` (4): progress and volume. `size.row` (48): data rows. `size.dot` (12): radio dot.
+- `layout.card-min-width` (288): smallest usable card (320 px screen minus margins, WCAG 1.4.10). `layout.sidebar-width` (224): side columns (filters, app navigation, "On this page").
+- Values outside the 4 px scale live in `reference.dimension.*` and are used only through system or component tokens.
+- Padding 0 has no variable: leave it unbound.
+- Not tokenized on purpose: media query breakpoints in CSS (`@media` cannot read variables; the values match `layout.breakpoint.*`).
 
 ## Usage rules that cannot be inferred from the values
 
@@ -94,5 +104,5 @@ A mode gives the same token another value. Components do not change: they keep u
 ## Known gaps
 
 - **Scopes:** every Figma variable uses "All scopes", so every picker shows every variable. Planned: scopes per token (fills, text, gap, radius) set in `tokens.json` so Tokens Studio keeps them on export.
-- **Hidden reference:** reference variables are published, so designers can pick raw values. Planned: hide them from publishing, also from `tokens.json`.
+- **Hidden reference:** reference variables are published, so designers can pick raw values. Tested on 17 November with `color/neutral/300`: hidden in Figma, system aliases keep working in other files, and a Tokens Studio export keeps the setting. Planned: hide all reference variables once no component binds them directly (v14). Tokens Studio does not document a hide-from-publishing setting, so it is set in Figma.
 - **Motion tokens** are proposed in `docs/motion.md`, not yet in `tokens.json`.

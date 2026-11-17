@@ -22,7 +22,7 @@ export function Accordion({ items }: { items: { title: string; content: ReactNod
     <div className="ds-accordion">
       {items.map((it) => (
         <details key={it.title} className="ds-accordion__item" open={it.open}>
-          <summary className="ds-accordion__title">{it.title}</summary>
+          <summary className="ds-accordion__title">{it.title}<ChevronDownIcon /></summary>
           <div className="ds-accordion__content">{it.content}</div>
         </details>
       ))}
@@ -117,6 +117,10 @@ export function BarChart({ title, data, summary }: { title: string; data: { labe
 
 export function HeadphonesIcon() {
   return <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 00-9 9v7a2 2 0 002 2h3v-8H5v-1a7 7 0 0114 0v1h-3v8h3a2 2 0 002-2v-7a9 9 0 00-9-9zM7 15v4H5v-4zm12 4h-2v-4h2z" /></svg>;
+}
+/** Figma: icon/material/keyboard_arrow_down. Decorative: the summary already says open or closed. */
+export function ChevronDownIcon() {
+  return <svg className="ds-accordion__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" /></svg>;
 }
 export function NoteIcon() {
   return <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v10.55A4 4 0 1014 17V7h4V3z" /></svg>;

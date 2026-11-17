@@ -20,7 +20,7 @@
   text-decoration: underline;
 }
 /* Header link State=Current: no underline, a bar below instead, plus aria-current="page". */
-.ds-header__link[aria-current="page"] { text-decoration: none; box-shadow: inset 0 calc(-1 * var(--border-width-2)) 0 currentColor; }
+.ds-header__link[aria-current="page"] { text-decoration: none; box-shadow: inset 0 calc(-1 * var(--border-width-strong)) 0 currentColor; }
 .ds-header :focus-visible { outline-color: var(--color-text-inverse); }
 
 /* Size=Compact: below the expanded breakpoint (840 px) the links move behind the Menu button. */

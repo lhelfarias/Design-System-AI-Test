@@ -29,7 +29,7 @@
   width: calc(var(--size-indicator) * 0.3);
   height: calc(var(--size-indicator) * 0.55);
   border: solid var(--checkbox-checkmark);
-  border-width: 0 var(--border-width-2) var(--border-width-2) 0;
+  border-width: 0 var(--border-width-strong) var(--border-width-strong) 0;
   transform: translateY(-10%) rotate(45deg);
 }
 .ds-choice__input:disabled { border-color: var(--radio-disabled-border); cursor: not-allowed; }

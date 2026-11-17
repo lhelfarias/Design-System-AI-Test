@@ -7,7 +7,7 @@ main:focus { outline: none; }
 .page-band h1 { margin: 0; font: var(--typography-heading-1); }
 .page-band__lead { margin: 0; font: var(--typography-body); }
 .page-band__meta { margin: 0; font: var(--typography-caption); color: var(--color-text-muted); }
-.page-band__control { flex: 0 1 calc(var(--space-16) * 4); }
+.page-band__control { flex: 0 1 var(--title-band-control-width); }
 .page-band__control .ds-select { max-width: none; }
 .page-h2 { margin: 0 0 var(--space-stack-md); font: var(--typography-heading-3); }
 @media (max-width: 599px) {
