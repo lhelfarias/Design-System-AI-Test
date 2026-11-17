@@ -26,3 +26,9 @@
 - The repository is the source; the Figma page is a readable copy for designers.
 - When a file in `ai-context/` changes, update its frame on the "AI context" page in the same task, then ask for the library to be published.
 - Frames use library text styles (heading-2, heading-4, body-sm, label) and color variables only.
+
+## From Figma to code
+
+- Every library component that exists in code has, in its description, the React usage, and a documentation link to its source file. Read them in Dev Mode or with the connector before writing code.
+- Code Connect templates are ready in `packages/react/codeconnect/` but cannot be published on the current plan (Organization or Enterprise required). Do not try to publish them again unless the plan changes.
+- When a component changes in code, update its description in the library and its template.
