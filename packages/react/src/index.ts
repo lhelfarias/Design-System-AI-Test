@@ -11,3 +11,4 @@ export * from "./components/Footer";
 export * from "./components/Layout";
 export * from "./components/Content";
 export * from "./components/Music";
+export * from "./components/StepIndicator";

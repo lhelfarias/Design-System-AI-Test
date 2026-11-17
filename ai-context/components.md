@@ -26,6 +26,7 @@ Status: **code** = in `packages/react` and Figma; **Figma** = only in the Figma 
 | Accordion | code | items[{title, content, open}] | FAQs, optional detail | Native details/summary |
 | Pagination | code | current, total, label | Long lists | aria-current="page"; hidden "page" in names |
 | Tabs, Search, Link, Dialog, Textarea | Figma | — | See Figma guides | — |
+| Step indicator | code | steps, current, showLabels, headingLevel | Linear multi-step forms (3–7 steps), below the h1 | ol with aria-current="step", hidden "completed"/"not completed", focus to the step heading on change |
 | Icon button | code | icon, label, pressed, variant ghost/primary | Compact actions | label is required; aria-pressed for toggles |
 | Nav item | code | icon, href, current | App side navigation | aria-current="page" |
 | Track list (Track row) | code | tracks, current, onPlay | Song lists | Table; play button names the song and artist |

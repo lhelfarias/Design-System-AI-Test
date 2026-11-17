@@ -10,7 +10,7 @@ React components of the design system. Every style comes from the CSS variables 
 |---|---|
 | `npm run dev` | Opens the six example screens (switch with the header links) |
 | `npm run storybook` | Storybook: Introduction, Foundations, Guidelines, one page per component, Patterns, For teams and AI; toolbar "Mode" switches to `tv` |
-| `npm test` | Type check, build, and accessibility check with axe-core (WCAG 2.2 A/AA rules) of the six screens at 1440 and 360 px, plus the simulator error state (13 cases), and text contrast of every link, button and summary on hover (axe only checks the resting state) |
+| `npm test` | Type check, build, and accessibility check with axe-core (WCAG 2.2 A/AA rules) of the six screens at 1440 and 360 px, plus the simulator error state (14 cases), and text contrast of every link, button and summary on hover (axe only checks the resting state) |
 
 `npm run a11y` also saves screenshots in `screenshots/` to compare with Figma.
 
@@ -46,7 +46,7 @@ Six example screens, switched with the URL hash (`#product`, `#store`, `#music`,
 | `HelpArticle.tsx` | 22:201 / 22:333 |
 | `Analytics.tsx` | 25:3 / 25:233 |
 
-`npm run a11y` checks every screen at 1440 and 360 px (13 cases, axe WCAG 2.2 AA) and hovers every link, button and summary to check its text contrast (12 cases).
+`npm run a11y` checks every screen at 1440 and 360 px (14 cases, axe WCAG 2.2 AA) and hovers every link, button and summary to check its text contrast (12 cases).
 
 Differences from Figma: Music shows the site header on top so the demo can move between screens; the TV versions are not built in code yet.
 
@@ -62,7 +62,7 @@ One-time setup (repository owner): Settings → Pages → Build and deployment �
 `.github/workflows/checks.yml` runs on every pull request and on main:
 
 - **Tokens:** build, contrast in every mode, and a check that `css/tokens.css` and the generated foundations docs match `tokens.json`.
-- **React:** typecheck, build and the axe check of every screen (13 cases). Screenshots are kept as a downloadable artifact for 14 days.
+- **React:** typecheck, build and the axe check of every screen (14 cases). Screenshots are kept as a downloadable artifact for 14 days.
 
 A red cross on a pull request means: do not merge yet.
 

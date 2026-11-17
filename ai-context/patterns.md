@@ -31,7 +31,7 @@ Six screens in `packages/react/src/pages`, one per pattern. Each is a "consumer 
 | Product | Product.tsx | Hero in tv mode with the page gradient; white sections with cards, table and accordion |
 | Store | Store.tsx | Title band with sort control; filters panel + product grid (3 → 2 → 1 columns) + pagination |
 | Music | Music.tsx | App layout in three panels: navigation, songs, player bar |
-| Simulator | Simulator.tsx | Form in a white panel; live summary in glass |
+| Simulator | Simulator.tsx | Form in three steps (Amount, Account, Review) with a Step indicator, in a white panel; live summary in glass |
 | Help article | HelpArticle.tsx | Long text in a white panel at reading width; sticky "On this page" |
 | Analytics | Analytics.tsx | Stat cards (4 → 2 columns), bar chart with text summary, table in glass |
 
