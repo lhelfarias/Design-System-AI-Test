@@ -39,4 +39,5 @@ body {
 
 /* Links: same color as Figma "Link" text style, in both modes. */
 a { color: var(--color-text-link); }
-a:hover { color: var(--color-text-link-hover); }
+/* Low specificity on purpose: components that style a link (header, buttons as links) keep their own colors on hover. */
+a:where(:hover) { color: var(--color-text-link-hover); }

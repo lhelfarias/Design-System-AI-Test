@@ -7,7 +7,7 @@
 - Use system tokens in pages, component tokens inside their component. Never use reference tokens in components or pages; if a value has no system token, propose one. Padding 0 has no variable. Propose a new token only when the value is shared; a value used once stays fixed and is documented.
 - Keep the Figma name and properties in code (Figma `Button` / `Type=Primary` → React `Button variant="primary"`).
 - Meet WCAG 2.2 AA: visible labels, 44 px targets, visible focus ring, text contrast 4.5:1, UI contrast 3:1, color never the only signal.
-- Run the checks: `npm test` in `packages/tokens` (contrast in both modes) and in `packages/react` (axe at 1440 and 360 px).
+- Run the checks: `npm test` in `packages/tokens` (contrast in both modes) and in `packages/react` (axe at 1440 and 360 px, plus text contrast of every link and button on hover).
 - Report what you could not bind or decide.
 - Keep documentation in its three places in the same task: repository (`docs/`, `ai-context/`), Figma (guides, "AI context" page) and Storybook (component pages). Foundations docs are generated: run `npm test` in packages/tokens, never edit them by hand.
 
