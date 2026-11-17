@@ -1,0 +1,16 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { TypeScale } from "../FoundationDocs";
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+One family: **Open Sans**, fallback Arial. Nine styles. In Figma they are text styles; in CSS each one is a `font` shorthand: `font: var(--typography-body)`.
+
+<TypeScale />
+
+## Rules
+
+- One `h1` per page; do not skip heading levels.
+- Long text at reading width: `layout.reading-width` (640 px).
+- Line height is a percent in tokens (what Figma reads) and unitless in CSS (the build converts it).

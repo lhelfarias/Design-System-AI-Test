@@ -31,3 +31,8 @@ Three layers. Names are the same in Figma (slashes) and CSS (hyphens): `color/te
 ## Layout
 
 Breakpoints 600 / 840 / 1200 / 1600; columns 4 / 8 / 12; margins 16 / 24 / 32 / 32 / 48; `layout.max-width` 1200; `layout.reading-width` 640. TV: 960 × 540, safe area 48 × 24, focus scale 1.05.
+
+## Generated references
+
+- `docs/foundations/` (colors, typography, spacing and layout): generated from tokens.json by `npm test` in packages/tokens. Includes default and tv values and every contrast pair.
+- Storybook → Foundations shows the same data with live swatches.

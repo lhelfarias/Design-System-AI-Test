@@ -2,7 +2,14 @@ import type { Preview } from "@storybook/react-vite";
 import "../src/styles/base.css";
 
 const preview: Preview = {
+  // Every component gets a documentation page with its description, props table and examples.
+  tags: ["autodocs"],
   parameters: {
+    options: {
+      storySort: {
+        order: ["Introduction", "Foundations", ["Colors", "Typography", "Spacing and layout", "Modes and surfaces"], "Guidelines", ["Visual style and devices", "Layout", "Navigation", "Accessibility", "Motion"], "Components", "Patterns", ["Overview", "Screens"], "For teams and AI", ["Contributing", "Distribution", "AI context"]],
+      },
+    },
     // Accessibility panel: fail the story test on violations instead of only reporting them.
     a11y: { test: "error" },
   },

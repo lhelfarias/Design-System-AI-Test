@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="For teams and AI/Contributing" />
+
+# Contributing
+
+Many teams use the system; a small core team owns tokens, the library and this documentation. Anyone can propose a change.
+
+## A new or changed token
+
+1. Open a pull request that edits `packages/tokens/tokens.json` (never create variables directly in Figma).
+2. Checks run: build, contrast in both modes, and that the generated CSS and docs match.
+3. The core team reviews and merges.
+4. In the library file: Tokens Studio → Pull → export; then publish the library.
+
+## A new component
+
+1. Check the library and this Storybook first; reuse before creating.
+2. Propose it with the screen that needs it and the reason.
+3. Build it in the Figma library with variables only, all states (focus, error, disabled) and a guide.
+4. Build it in `packages/react` with the same name and properties, a story file and the accessibility check.
+5. Only then use it in screens.
+
+## Rules for every pull request
+
+- One change per pull request; never merge on red.
+- A changelog line written for designers and developers.
+- Breaking changes (renamed token, changed property) wait for a major version.
+
+Proposal of governance: an opinion for this team, based on Nathan Curtis, "Team Models for Scaling a Design System" (EightShapes).

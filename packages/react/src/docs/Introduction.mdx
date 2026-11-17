@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# Ataraxia design system
+
+An example design system built end to end with AI and reviewed by people: tokens, a Figma library, React components and six example screens. The brand is made up; the method is what matters.
+
+## Start here
+
+| If you are… | Read |
+|---|---|
+| A designer | Foundations, then Guidelines, then the Figma library "UI Kit – AI Test" |
+| A developer | Foundations, then Components (each page has props, tokens and accessibility rules) |
+| A team adopting the system | For teams and AI → Contributing and Distribution |
+| An AI agent | For teams and AI → AI context (rules, tokens, components, patterns) |
+
+## How it fits together
+
+1. **Tokens** live in `packages/tokens/tokens.json` in the repository. Every change is a pull request.
+2. **Figma** receives them as variables (Tokens Studio) and the library builds components with them.
+3. **Code** receives them as CSS variables (`tokens.css`, generated). React components use only those variables and keep the Figma names and properties.
+4. **Screens** only assemble library components. If a part is missing, it goes into the library first.
+5. **Checks** run on every pull request: contrast in both modes, types, build and accessibility of every screen.
+
+## Links
+
+- Repository: [lhelfarias/Design-System-AI-Test](https://github.com/lhelfarias/Design-System-AI-Test)
+- Figma library: [UI Kit – AI Test](https://www.figma.com/design/M0pBcAnDr1iLJXpcyZ2Epa/UI-Kit-AI-Test)
+- Use the **Mode** switch in the toolbar to see every component in the tv mode.

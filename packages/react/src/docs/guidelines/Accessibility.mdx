@@ -1,0 +1,27 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Guidelines/Accessibility" />
+
+# Accessibility
+
+Target: **WCAG 2.2 level AA**. Automatic checks run on every pull request, but they find only part of the issues (Deque reports about 57% by volume), so people still test with keyboard and screen reader.
+
+| Rule | WCAG | How the system does it |
+|---|---|---|
+| Text contrast 4.5:1, UI and focus 3:1 | 1.4.3, 1.4.11 | Checked by script in both modes (`npm test` in packages/tokens) |
+| Color is never the only signal | 1.4.1 | Tags, banners and stat changes carry text and icons |
+| Visible focus | 2.4.7, 2.4.11 | Global focus ring from `focus.ring.*`; white in tv mode |
+| Targets at least 24 px | 2.5.8 | 44 px everywhere (`size.target-min`) |
+| Labels and instructions | 3.3.2 | Every field has a visible label; never the placeholder |
+| Errors identified and described | 3.3.1, 3.3.3 | Error message linked with aria-describedby, hidden "Error:" prefix |
+| Label in name | 2.5.3 | Accessible names start with the visible text; context goes in hidden text after it |
+| Bypass blocks | 2.4.1 | Skip link on every page; header, main and footer landmarks |
+| Headings and structure | 1.3.1 | One h1; sections with h2; tables with captions and scopes |
+| Animation from interactions | 2.3.3 | `prefers-reduced-motion` removes motion |
+
+## How to test a change
+
+1. `npm test` in packages/react: axe at 1440 and 360 px for every screen.
+2. Keyboard only: Tab through the page; every action reachable, focus always visible.
+3. Screen reader (VoiceOver or NVDA): headings, landmarks, form errors.
+4. Zoom to 200% and a 320 px wide window: nothing hidden or overlapping.

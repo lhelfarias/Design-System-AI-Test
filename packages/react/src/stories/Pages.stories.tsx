@@ -5,7 +5,7 @@ import { HelpArticle } from "../pages/HelpArticle";
 import { Product } from "../pages/Product";
 import { Music } from "../pages/Music";
 
-const meta: Meta = { title: "Pages/Ataraxia", parameters: { layout: "fullscreen" } };
+const meta: Meta = { title: "Patterns/Screens", parameters: { layout: "fullscreen" } };
 export default meta;
 type S = StoryObj;
 export const ProductPage: S = { render: () => <Product /> };
