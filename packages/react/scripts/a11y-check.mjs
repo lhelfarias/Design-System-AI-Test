@@ -34,8 +34,13 @@ const cases = [
   { name: "simulator-review-desktop", hash: "simulator", width: 1440, height: 1000, act: async (p) => { await p.click("button[type=submit]"); await p.click("button[type=submit]"); } },
   { name: "components-dialog-desktop", hash: "components", width: 1440, height: 1000, act: async (p) => { await p.getByRole("button", { name: "Cancel the request" }).click(); } },
 ];
+// A11Y_ONLY=prototype checks only the participant prototype (npm run check:prototype); the default run skips it.
+const ONLY = process.env.A11Y_ONLY;
+const run = ONLY === "prototype"
+  ? [{ name: "prototype-desktop", hash: "prototype", width: 1440, height: 1000 }, { name: "prototype-mobile", hash: "prototype", width: 360, height: 800 }]
+  : cases;
 let total = 0;
-for (const c of cases) {
+for (const c of run) {
   const context = await browser.newContext({ viewport: { width: c.width, height: c.height }, deviceScaleFactor: 1 });
   const page = await context.newPage();
   await page.goto(`http://localhost:4173/#${c.hash}`);

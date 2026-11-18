@@ -32,6 +32,7 @@ An example design system built end to end with AI and reviewed by people: tokens
 - View without installing: build the single HTML file, or open Storybook online.
 - `packages/tokens`: `npm install`, `npm test`.
 - `packages/react`: `npm install`, `npm run dev` (screens), `npm run storybook`, `npm test`.
+- Check a participant's prototype (user test): in `packages/react`, `npm run check:prototype -- path/to/Prototype.tsx`. It scans for fixed values and imports outside the library, then runs typecheck, build, axe and hover contrast on it. Result: Completed, Partial or Not completed.
 
 ## Status
 

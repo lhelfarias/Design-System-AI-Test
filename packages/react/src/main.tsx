@@ -9,8 +9,9 @@ import { HelpArticle } from "./pages/HelpArticle";
 import { Product } from "./pages/Product";
 import { Music } from "./pages/Music";
 import { Components } from "./pages/Components";
+import { Prototype } from "./pages/Prototype";
 
-type PageId = RouteId | "components";
+type PageId = RouteId | "components" | "prototype";
 const PAGES: Record<PageId, { title: string; Page: () => React.JSX.Element }> = {
   product: { title: "Ataraxia Halo", Page: Product },
   store: { title: "Headphones & speakers", Page: Store },
@@ -19,10 +20,11 @@ const PAGES: Record<PageId, { title: string; Page: () => React.JSX.Element }> = 
   help: { title: "How a cash advance works", Page: HelpArticle },
   analytics: { title: "Listening analytics", Page: Analytics },
   components: { title: "Components", Page: Components },
+  prototype: { title: "Prototype", Page: Prototype },
 };
 const read = (): PageId => {
   const h = location.hash.slice(1);
-  if (h === "components") return "components";
+  if (h === "components" || h === "prototype") return h;
   return (ROUTES.find((r) => r.id === h)?.id ?? (h ? null : "product")) as PageId;
 };
 
