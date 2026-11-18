@@ -12,3 +12,8 @@ export * from "./components/Layout";
 export * from "./components/Content";
 export * from "./components/Music";
 export * from "./components/StepIndicator";
+export * from "./components/Navigation";
+export * from "./components/Card";
+export * from "./components/Search";
+export * from "./components/Tabs";
+export * from "./components/Dialog";

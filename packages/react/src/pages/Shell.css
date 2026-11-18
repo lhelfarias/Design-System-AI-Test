@@ -1,5 +1,3 @@
-.page-skip { position: absolute; left: var(--space-inset-sm); top: calc(-1 * var(--size-target-min) * 2); padding: var(--space-inset-sm); background: var(--color-surface-default); color: var(--color-text-link); z-index: 2; }
-.page-skip:focus { top: var(--space-inset-sm); }
 main:focus { outline: none; }
 .page-main { padding: var(--layout-section-gap-compact) 0; }
 .page-band { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-stack-lg) var(--layout-gutter-large); }

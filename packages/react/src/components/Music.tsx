@@ -94,3 +94,13 @@ export function PlayerBar({ track, playing, onToggle, onPrev, onNext }: { track:
     </section>
   );
 }
+
+/** Figma: Album tile (Focused False/True). TV tile: cover size.media.md; on focus it scales by layout.tv.focus-scale and shows the ring. The title is the link. */
+export function AlbumTile({ title, href = "#" }: { title: string; href?: string }) {
+  return (
+    <a className="ds-album-tile" href={href}>
+      <span className="ds-album-tile__cover" aria-hidden="true"><NoteIcon /></span>
+      <span className="ds-album-tile__title">{title}</span>
+    </a>
+  );
+}

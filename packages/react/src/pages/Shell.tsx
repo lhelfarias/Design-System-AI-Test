@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Header, TitleBand, Footer } from "..";
+import { Header, TitleBand, Footer, SkipLink } from "..";
 import "./Shell.css";
 
 /** The six example screens. Each one is a "consumer team" page built only from the library. */
@@ -14,10 +14,10 @@ export const ROUTES = [
 export type RouteId = (typeof ROUTES)[number]["id"];
 
 /** Page recipe (ai-context/patterns.md): skip link, header, optional title band, main, footer. */
-export function Shell({ current, band, children, mainClassName }: { current: RouteId; band?: ReactNode; children: ReactNode; mainClassName?: string }) {
+export function Shell({ current, band, children, mainClassName }: { current?: RouteId; band?: ReactNode; children: ReactNode; mainClassName?: string }) {
   return (
     <>
-      <a className="page-skip" href="#main">Skip to main content</a>
+      <SkipLink />
       <Header serviceName="Ataraxia" homeHref="#product" links={ROUTES.map((r) => ({ label: r.label, href: `#${r.id}`, current: r.id === current }))} />
       {band && <TitleBand>{band}</TitleBand>}
       <main id="main" tabIndex={-1} className={mainClassName ?? "page-main"}>{children}</main>

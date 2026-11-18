@@ -1,0 +1,8 @@
+.ds-dialog { width: min(100% - 2 * var(--layout-margin-compact), var(--layout-reading-width)); padding: var(--space-inset-xl); border: var(--border-width-default) solid var(--color-border-subtle); border-radius: var(--radius-container); background: var(--color-surface-default); color: var(--color-text-default); }
+.ds-dialog::backdrop { background: var(--color-surface-inverse); opacity: 0.6; }
+.ds-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-inline-md); }
+.ds-dialog__title { margin: 0; font: var(--typography-heading-3); }
+.ds-dialog__close { flex: none; display: grid; place-items: center; width: var(--size-target-min); height: var(--size-target-min); padding: 0; border: 0; background: transparent; color: var(--color-text-default); cursor: pointer; }
+.ds-dialog__close svg { width: var(--size-icon); height: var(--size-icon); }
+.ds-dialog__body { margin: var(--space-stack-md) 0; font: var(--typography-body); }
+.ds-dialog__actions { display: flex; flex-wrap: wrap; gap: var(--space-inline-md); }

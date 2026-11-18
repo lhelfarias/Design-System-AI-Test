@@ -1,0 +1,5 @@
+.ds-tabs__list { display: flex; gap: var(--space-inline-md); border-bottom: var(--border-width-default) solid var(--color-border-subtle); overflow-x: auto; }
+.ds-tab { min-height: var(--size-target-min); padding: 0 var(--space-inset-sm); border: 0; border-bottom: var(--border-width-strong) solid transparent; margin-bottom: calc(-1 * var(--border-width-default)); background: transparent; color: var(--color-text-link); font: var(--typography-body); cursor: pointer; }
+.ds-tab:hover { color: var(--color-text-link-hover); }
+.ds-tab[aria-selected="true"] { color: var(--color-text-default); font: var(--typography-label); border-bottom-color: var(--color-action-primary-default); }
+.ds-tabs__panel { padding: var(--space-stack-md) 0; font: var(--typography-body); }
