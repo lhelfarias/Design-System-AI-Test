@@ -27,3 +27,4 @@ Fixed on purpose (single use, documented): Product card image height (200), prod
 | TV screens in code | The six screens exist for TV in Figma, not in code. | Pages with `data-theme="tv"`, focus handling for a remote control, and the accessibility check at 960 × 540. |
 | Package for other teams | Teams should install tokens and components with npm instead of copying them. | GitHub Packages, versions and changelog, as planned in `docs/distribution.md`. |
 | Code Connect | Dev Mode would show the real React code for each instance. | Templates are ready; publishing needs an Organization or Enterprise Figma plan. |
+| Storybook Designs addon | Developers see the Figma frame next to the built component. | Install the addon and add a Figma link per story. Options compared in `docs/design-code-links.md`. |

@@ -14,7 +14,7 @@ An example design system built end to end with AI and reviewed by people: tokens
 |---|---|
 | `packages/tokens` | `tokens.json` (source of truth), build scripts, `css/tokens.css` (generated), contrast check |
 | `packages/react` | React components, Storybook, the six example screens, accessibility check, Code Connect templates |
-| `docs/` | Guidelines: layout, navigation, motion, visual style and devices, distribution, next improvements |
+| `docs/` | Guidelines: layout, navigation, motion, visual style and devices, distribution, design and code links, next improvements |
 | `docs/foundations/` | Colors, typography, spacing and layout, **generated** from `tokens.json` |
 | `ai-context/` | Short rules and references for AI agents (also a page in the Figma library) |
 | `.github/workflows/` | Checks on every pull request; Storybook publishing |
