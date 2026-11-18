@@ -8,23 +8,27 @@ import { Analytics } from "./pages/Analytics";
 import { HelpArticle } from "./pages/HelpArticle";
 import { Product } from "./pages/Product";
 import { Music } from "./pages/Music";
+import { Components } from "./pages/Components";
 
-const PAGES: Record<RouteId, { title: string; Page: () => React.JSX.Element }> = {
+type PageId = RouteId | "components";
+const PAGES: Record<PageId, { title: string; Page: () => React.JSX.Element }> = {
   product: { title: "Ataraxia Halo", Page: Product },
   store: { title: "Headphones & speakers", Page: Store },
   music: { title: "Deep Focus", Page: Music },
   simulator: { title: "Cash advance simulator", Page: Simulator },
   help: { title: "How a cash advance works", Page: HelpArticle },
   analytics: { title: "Listening analytics", Page: Analytics },
+  components: { title: "Components", Page: Components },
 };
-const read = (): RouteId => {
+const read = (): PageId => {
   const h = location.hash.slice(1);
-  return (ROUTES.find((r) => r.id === h)?.id ?? (h ? null : "product")) as RouteId;
+  if (h === "components") return "components";
+  return (ROUTES.find((r) => r.id === h)?.id ?? (h ? null : "product")) as PageId;
 };
 
 /** Hash navigation, so the single HTML file works with a double click (no server). */
 function App() {
-  const [route, setRoute] = useState<RouteId>(read() ?? "product");
+  const [route, setRoute] = useState<PageId>(read() ?? "product");
   useEffect(() => {
     const on = () => {
       const next = read();

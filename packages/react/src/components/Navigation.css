@@ -1,0 +1,6 @@
+.ds-link { color: var(--color-text-link); text-decoration: underline; }
+.ds-back-link { display: inline-flex; align-items: center; gap: var(--space-inline-xs); min-height: var(--size-target-min); font: var(--typography-body); color: var(--color-text-link); text-decoration: underline; }
+.ds-back-link svg { width: var(--size-icon); height: var(--size-icon); flex: none; }
+.ds-skip-link { position: absolute; left: var(--space-inset-sm); top: calc(-1 * var(--size-target-min) * 2); z-index: 2; padding: var(--space-inset-sm); background: var(--color-surface-default); color: var(--color-text-link); font: var(--typography-label); }
+.ds-skip-link:focus { top: var(--space-inset-sm); }
+.ds-divider { margin: 0; border: 0; border-top: var(--border-width-default) solid var(--color-border-subtle); }

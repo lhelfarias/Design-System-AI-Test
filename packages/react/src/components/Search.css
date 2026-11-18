@@ -1,0 +1,3 @@
+.ds-search { display: flex; flex-direction: column; gap: var(--text-input-label-gap); max-width: 30rem; }
+.ds-search__row { display: flex; gap: var(--space-inline-sm); }
+.ds-search__row .ds-text-input { flex: 1; max-width: none; }

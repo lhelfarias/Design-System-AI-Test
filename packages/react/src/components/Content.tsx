@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from "react";
+import { useId, useMemo, useState, type ReactNode } from "react";
 import "./Content.css";
 
 /** Figma: Tag. Text label; color is never the only signal. */
@@ -31,13 +31,44 @@ export function Accordion({ items }: { items: { title: string; content: ReactNod
 }
 
 /** Figma: Table (Simple). Use SummaryList on compact screens. */
-export function Table({ caption, columns, rows, numeric = [] }: { caption: string; columns: string[]; rows: string[][]; numeric?: number[] }) {
+/**
+ * Figma: Table (Type: Simple, Sortable, Selectable). Hidden caption, th scope="col", the first cell of a row is its header.
+ * Sortable: header cells are buttons; the sorted column has aria-sort. Selectable: a checkbox per row, named with the row.
+ */
+export function Table({ caption, columns, rows, numeric = [], type = "simple" }: { caption: string; columns: string[]; rows: string[][]; numeric?: number[]; type?: "simple" | "sortable" | "selectable" }) {
+  const [sort, setSort] = useState<{ col: number; dir: "ascending" | "descending" } | null>(null);
+  const [checked, setChecked] = useState<Set<string>>(new Set());
+  const sorted = useMemo(() => {
+    if (!sort) return rows;
+    const n = numeric.includes(sort.col);
+    const val = (r: string[]) => n ? Number(r[sort.col].replace(/[^0-9.-]/g, "")) : r[sort.col].toLowerCase();
+    return [...rows].sort((a, b) => (val(a) > val(b) ? 1 : val(a) < val(b) ? -1 : 0) * (sort.dir === "ascending" ? 1 : -1));
+  }, [rows, sort, numeric]);
+  const toggleSort = (col: number) => setSort((s) => ({ col, dir: s && s.col === col && s.dir === "ascending" ? "descending" : "ascending" }));
+  const toggleRow = (key: string) => setChecked((c) => { const n = new Set(c); n.has(key) ? n.delete(key) : n.add(key); return n; });
   return (
     <div className="ds-table-wrap">
       <table className="ds-table">
         <caption className="ds-visually-hidden">{caption}</caption>
-        <thead><tr>{columns.map((c, i) => <th key={c} scope="col" className={numeric.includes(i) ? "is-num" : undefined}>{c}</th>)}</tr></thead>
-        <tbody>{rows.map((r) => <tr key={r.join()}>{r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={numeric.includes(i) ? "is-num" : undefined}>{v}</td>)}</tr>)}</tbody>
+        <thead><tr>
+          {type === "selectable" && <th scope="col"><span className="ds-visually-hidden">Select</span></th>}
+          {columns.map((c, i) => (
+            <th key={c} scope="col" className={numeric.includes(i) ? "is-num" : undefined} aria-sort={type === "sortable" ? (sort?.col === i ? sort.dir : "none") : undefined}>
+              {type === "sortable"
+                ? <button type="button" className="ds-table__sort" onClick={() => toggleSort(i)}>{c}<span aria-hidden="true" className="ds-table__arrow">{sort?.col === i ? (sort.dir === "ascending" ? "▲" : "▼") : "↕"}</span></button>
+                : c}
+            </th>
+          ))}
+        </tr></thead>
+        <tbody>{sorted.map((r) => {
+          const key = r.join();
+          return (
+            <tr key={key}>
+              {type === "selectable" && <td className="ds-table__select"><input type="checkbox" className="ds-table__check" aria-label={`Select ${r[0]}`} checked={checked.has(key)} onChange={() => toggleRow(key)} /></td>}
+              {r.map((v, i) => i === 0 ? <th key={i} scope="row">{v}</th> : <td key={i} className={numeric.includes(i) ? "is-num" : undefined}>{v}</td>)}
+            </tr>
+          );
+        })}</tbody>
       </table>
     </div>
   );

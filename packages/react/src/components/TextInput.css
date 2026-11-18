@@ -11,3 +11,4 @@
 }
 .ds-text-input--error { border-color: var(--color-border-error); border-width: var(--text-input-border-width-error); }
 .ds-text-input:disabled { background: var(--color-action-disabled-background); color: var(--color-action-disabled-foreground); border-color: var(--color-action-disabled-border); }
+.ds-textarea { max-width: 40rem; padding: var(--space-inset-sm) var(--text-input-padding-x); resize: vertical; field-sizing: content; min-height: calc(var(--size-target-min) * 2); }

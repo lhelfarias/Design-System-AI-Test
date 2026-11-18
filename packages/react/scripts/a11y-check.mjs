@@ -24,7 +24,7 @@ const server = createServer(async (req, res) => {
 
 await mkdir(OUT, { recursive: true });
 const browser = await chromium.launch();
-const PAGES = ["product", "store", "music", "simulator", "help", "analytics"];
+const PAGES = ["product", "store", "music", "simulator", "help", "analytics", "components"];
 const cases = [
   ...PAGES.flatMap((id) => [
     { name: `${id}-desktop`, hash: id, width: 1440, height: 1000 },
@@ -32,6 +32,7 @@ const cases = [
   ]),
   { name: "simulator-error-mobile", hash: "simulator", width: 360, height: 800, act: async (p) => { await p.fill("input[inputmode=decimal]", "20"); await p.click("button[type=submit]"); } },
   { name: "simulator-review-desktop", hash: "simulator", width: 1440, height: 1000, act: async (p) => { await p.click("button[type=submit]"); await p.click("button[type=submit]"); } },
+  { name: "components-dialog-desktop", hash: "components", width: 1440, height: 1000, act: async (p) => { await p.getByRole("button", { name: "Cancel the request" }).click(); } },
 ];
 let total = 0;
 for (const c of cases) {

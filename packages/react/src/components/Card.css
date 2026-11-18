@@ -1,0 +1,11 @@
+.ds-card { position: relative; display: flex; flex-direction: column; min-width: var(--layout-card-min-width); overflow: hidden; background: var(--color-surface-default); border: var(--card-border-width) solid var(--color-border-subtle); border-radius: var(--card-radius); }
+.ds-card__image { aspect-ratio: 16 / 9; display: grid; place-items: center; background: var(--color-surface-brand-subtle); color: var(--color-text-brand); }
+.ds-card__image svg { width: 25%; height: auto; }
+.ds-card__content { display: flex; flex-direction: column; gap: var(--card-gap); padding: var(--card-padding); }
+.ds-card__title { margin: 0; font: var(--card-title-typography); color: var(--color-text-default); }
+.ds-card__body { margin: 0; font: var(--card-body-typography); }
+.ds-card__actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: var(--space-inline-sm); }
+.ds-card--clickable .ds-card__title a { color: var(--color-text-link); }
+.ds-card--clickable:hover { border-color: var(--card-border-hover); }
+.ds-card--clickable:has(.ds-stretched-link:focus-visible) { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); border-radius: var(--focus-ring-radius-container); }
+.ds-card--clickable .ds-stretched-link:focus-visible { outline: none; }
