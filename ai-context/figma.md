@@ -30,6 +30,6 @@
 
 ## From Figma to code
 
-- Every library component that exists in code has, in its description, the React usage, and a documentation link to its source file. Read them in Dev Mode or with the connector before writing code.
+- Every library component that exists in code has, in its description, the React usage and its Storybook page, and a documentation link to its source file. Read them in Dev Mode or with the connector before writing code.
 - Code Connect templates are ready in `packages/react/codeconnect/` but cannot be published on the current plan (Organization or Enterprise required). Do not try to publish them again unless the plan changes.
 - When a component changes in code, update its description in the library and its template.
