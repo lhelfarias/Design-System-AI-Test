@@ -11,7 +11,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "a11y": "node scripts/a11y-check.mjs",
-    "test": "npm run typecheck && npm run build && npm run a11y"
+    "test": "npm run typecheck && npm run build && npm run a11y",
+    "check:prototype": "node scripts/check-prototype.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
